@@ -246,12 +246,12 @@ func TestArguments_FormatArgs(t *testing.T) {
 		{name: "simple", fields: fields{
 			Op:      "S",
 			Options: map[string]*Option{},
-			Targets: []string{"yay", "yay-bin", "yay-git"},
+			Targets: []string{"yippee", "yippee-bin", "yippee-git"},
 		}, wantArgs: []string{"-S"}},
 		{name: "only global", fields: fields{
 			Op:      "Y",
 			Options: map[string]*Option{"noconfirm": {Global: true, Args: []string{""}}},
-			Targets: []string{"yay", "yay-bin", "yay-git"},
+			Targets: []string{"yippee", "yippee-bin", "yippee-git"},
 		}, wantArgs: []string{"-Y"}},
 		{name: "options single", fields: fields{
 			Op:      "Y",
@@ -294,12 +294,12 @@ func TestArguments_FormatGlobalArgs(t *testing.T) {
 		{name: "simple", fields: fields{
 			Op:      "S",
 			Options: map[string]*Option{"dbpath": {Global: true, Args: []string{"/tmp/a", "/tmp/b"}}},
-			Targets: []string{"yay", "yay-bin", "yay-git"},
+			Targets: []string{"yippee", "yippee-bin", "yippee-git"},
 		}, wantArgs: []string{"--dbpath", "/tmp/a", "--dbpath", "/tmp/b"}},
 		{name: "only global", fields: fields{
 			Op:      "Y",
 			Options: map[string]*Option{"noconfirm": {Global: true, Args: []string{""}}},
-			Targets: []string{"yay", "yay-bin", "yay-git"},
+			Targets: []string{"yippee", "yippee-bin", "yippee-git"},
 		}, wantArgs: []string{"--noconfirm"}},
 		{name: "options single", fields: fields{
 			Op:      "Y",
@@ -337,7 +337,7 @@ func Test_isArg(t *testing.T) {
 }
 
 func TestArguments_ParseStdin(t *testing.T) {
-	input := []byte("yay")
+	input := []byte("yippee")
 
 	r, w, err := os.Pipe()
 	require.NoError(t, err)

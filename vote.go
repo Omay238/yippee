@@ -8,7 +8,7 @@ import (
 	"github.com/Jguer/votar/pkg/vote"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 type ErrAURVote struct {

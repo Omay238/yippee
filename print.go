@@ -15,14 +15,14 @@ import (
 	"github.com/leonelquinteros/gotext"
 	"golang.org/x/sys/unix"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/dep"
-	"github.com/Jguer/yay/v12/pkg/query"
-	"github.com/Jguer/yay/v12/pkg/runtime"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
-	"github.com/Jguer/yay/v12/pkg/upgrade"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/dep"
+	"github.com/Jguer/yippee/v12/pkg/query"
+	"github.com/Jguer/yippee/v12/pkg/runtime"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/upgrade"
 )
 
 // printInfo prints package info like pacman -Si.
@@ -84,7 +84,7 @@ func localStatistics(ctx context.Context, run *runtime.Runtime, dbExecutor db.Ex
 
 	remoteNames := dbExecutor.InstalledRemotePackageNames()
 	remote := dbExecutor.InstalledRemotePackages()
-	run.Logger.Infoln(gotext.Get("Yay version v%s", yayVersion))
+	run.Logger.Infoln(gotext.Get("Yay version v%s", yippeeVersion))
 	run.Logger.Println(text.Bold(text.Cyan("===========================================")))
 	run.Logger.Infoln(gotext.Get("Total installed packages: %s", text.Cyan(strconv.Itoa(info.Totaln))))
 	run.Logger.Infoln(gotext.Get("Foreign installed packages: %s", text.Cyan(strconv.Itoa(len(remoteNames)))))
@@ -95,7 +95,7 @@ func localStatistics(ctx context.Context, run *runtime.Runtime, dbExecutor db.Ex
 		run.Logger.Infoln(gotext.Get("Size of pacman cache %s: %s", path, text.Cyan(text.Human(size))))
 	}
 
-	run.Logger.Infoln(gotext.Get("Size of yay cache %s: %s", run.Cfg.BuildDir, text.Cyan(text.Human(info.yayCache))))
+	run.Logger.Infoln(gotext.Get("Size of yippee cache %s: %s", run.Cfg.BuildDir, text.Cyan(text.Human(info.yippeeCache))))
 	run.Logger.Println(text.Bold(text.Cyan("===========================================")))
 	run.Logger.Infoln(gotext.Get("Ten biggest packages:"))
 	biggestPackages(run.Logger, dbExecutor)

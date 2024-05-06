@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>, 2023\n"
-"Language-Team: Hebrew (https://app.transifex.com/yay-1/teams/123732/he/)\n"
+"Language-Team: Hebrew (https://app.transifex.com/yippee-1/teams/123732/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,7 +133,7 @@ msgid "Add %s or %s to your environment variables"
 msgstr "יש להוסיף %s או %s למשתני הסביבה שלך"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
+msgid "Avoid running yippee as root/sudo."
 msgstr "כדאי להימנע מהפעלה תחת root/sudo."
 
 #: pkg/dep/dep_graph.go:63
@@ -411,8 +411,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "גודל המטמון של pacman %s: %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "גודל המטמון של yay %s: %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "גודל המטמון של yippee %s: %s"
 
 #: print.go:62
 msgid "Snapshot URL"

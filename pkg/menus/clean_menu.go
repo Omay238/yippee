@@ -9,9 +9,9 @@ import (
 	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/runtime"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/runtime"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 func anyExistInCache(pkgbuildDirs map[string]string) bool {

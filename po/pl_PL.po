@@ -138,8 +138,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Dodaj %s lub %s do zmiennych środowiskowych"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "Unikaj uruchamiania yay jako root lub z sudo."
+msgid "Avoid running yippee as root/sudo."
+msgstr "Unikaj uruchamiania yippee jako root lub z sudo."
 
 #: pkg/dep/dep_graph.go:63
 #, fuzzy
@@ -430,7 +430,7 @@ msgstr "nie udało się przetworzyć %s: %s"
 
 #: print.go:98
 #, fuzzy
-msgid "Size of yay cache %s: %s"
+msgid "Size of yippee cache %s: %s"
 msgstr "nie udało się przetworzyć %s: %s"
 
 #: print.go:62
@@ -503,7 +503,7 @@ msgstr "Głosów"
 
 #: print.go:87
 msgid "Yay version v%s"
-msgstr "Wersja yaya v%s"
+msgstr "Wersja yippeea v%s"
 
 #: pkg/menus/menu.go:49
 #, fuzzy
@@ -835,8 +835,8 @@ msgstr "tak"
 #~ msgid "failed to read vcs file '%s': %s"
 #~ msgstr "nie udało się odczytać pliku VCS '%s': %s"
 
-#~ msgid "invalid sort mode. Fix with yay -Y --bottomup --save"
-#~ msgstr "niepoprawny tryb sortowania. Napraw przez yay -Y --bottomup --save"
+#~ msgid "invalid sort mode. Fix with yippee -Y --bottomup --save"
+#~ msgstr "niepoprawny tryb sortowania. Napraw przez yippee -Y --bottomup --save"
 
 #~ msgid "no packages match search"
 #~ msgstr "żadne paczki nie pasują do zapytania"

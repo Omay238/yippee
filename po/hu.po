@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: summoner, 2024\n"
-"Language-Team: Hungarian (https://app.transifex.com/yay-1/teams/123732/hu/)\n"
+"Language-Team: Hungarian (https://app.transifex.com/yippee-1/teams/123732/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -138,8 +138,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Állítsa be az %s vagy a %s környezeti változót"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "Ne futtassa a yay-t root-ként/sudo-val."
+msgid "Avoid running yippee as root/sudo."
+msgstr "Ne futtassa a yippee-t root-ként/sudo-val."
 
 #: pkg/dep/dep_graph.go:63
 msgid "Check Dependency"
@@ -419,8 +419,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "A pacman gyorsítótár mérete %s: %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "A yay gyorsítótár mérete %s: %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "A yippee gyorsítótár mérete %s: %s"
 
 #: print.go:62
 msgid "Snapshot URL"

@@ -1,4 +1,4 @@
-#compdef yay
+#compdef yippee
 # vim:tabstop=2 shiftwidth=2 filetype=zsh
 
 typeset -A opt_args
@@ -11,11 +11,11 @@ _pacman_opts_commands=(
 	{-G,--getpkgbuild}'[Get PKGBUILD from ABS or AUR]'
 	{-Q,--query}'[Query the package database]'
 	{-R,--remove}'[Remove a package from the system]'
-	{-P,--show}'[Print yay information]'
+	{-P,--show}'[Print yippee information]'
 	{-S,--sync}'[Synchronize packages]'
 	{-T,--deptest}'[Check if dependencies are installed]'
 	{-U,--upgrade}'[Upgrade a package]'
-	{-Y,--yay}'[Yay specific options]'
+	{-Y,--yippee}'[Yay specific options]'
 	{-W,--web}'[web options]'
 	{-V,--version}'[Display version and exit]'
 	'(-h --help)'{-h,--help}'[Display usage]'
@@ -144,7 +144,7 @@ _pacman_opts_query_modifiers=(
 )
 
 # -Y
-_pacman_opts_yay_modifiers=(
+_pacman_opts_yippee_modifiers=(
 	{-c,--clean}'[Remove unneeded dependencies]'
 	'--gendb[Generates development package DB used for updating]'
 )
@@ -164,8 +164,8 @@ _pacman_opts_web_modifiers=(
 # -P
 _pacman_opts_print_modifiers=(
 		{-c,--complete}'[Used for completions]'
-		{-d,--defaultconfig}'[Print default yay configuration]'
-		{-g,--config}'[Print current yay configuration]'
+		{-d,--defaultconfig}'[Print default yippee configuration]'
+		{-g,--config}'[Print current yippee configuration]'
 		{-n,--numberupgrades}'[Print number of updates]'
 		{-s,--stats}'[Display system package statistics]'
 		{-u,--upgrades}'[Print update list]'
@@ -397,11 +397,11 @@ _pacman_completions_all_packages() {
 	fi
 
 	if compset -P1 '*/*'; then
-		packages=( $(_call_program packages yay -Pc ${words[CURRENT]%/*}) )
+		packages=( $(_call_program packages yippee -Pc ${words[CURRENT]%/*}) )
 		typeset -U packages
 		${seq} _wanted repo_packages expl "repository/package" compadd ${sep[@]} ${(@)packages}
 	else
-		packages=( $(_call_program packages yay -Pc ) )
+		packages=( $(_call_program packages yippee -Pc ) )
 		typeset -U packages
 		${seq} _wanted packages expl "packages" compadd ${sep[@]} - "${(@)packages}"
 
@@ -554,7 +554,7 @@ _pacman_zsh_comp() {
 		Y*)
 			_arguments -s : \
 				'-Y' \
-				"$_pacman_opts_yay_modifiers[@]"
+				"$_pacman_opts_yippee_modifiers[@]"
 			;;
 		G*)
 			_arguments -s : \
@@ -605,7 +605,7 @@ _pacman_zsh_comp() {
 }
 _pacman_comp() {
 	case "$service" in
-		yay)
+		yippee)
 			_pacman_zsh_comp "$@"
 			;;
 		*)

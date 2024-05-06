@@ -7,11 +7,11 @@ import (
 	"github.com/Jguer/aur"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/dep"
-	"github.com/Jguer/yay/v12/pkg/runtime"
-	"github.com/Jguer/yay/v12/pkg/sync/srcinfo"
-	"github.com/Jguer/yay/v12/pkg/sync/workdir"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/dep"
+	"github.com/Jguer/yippee/v12/pkg/runtime"
+	"github.com/Jguer/yippee/v12/pkg/sync/srcinfo"
+	"github.com/Jguer/yippee/v12/pkg/sync/workdir"
 )
 
 func infoToInstallInfo(info []aur.Pkg) []map[string]*dep.InstallInfo {
@@ -29,7 +29,7 @@ func infoToInstallInfo(info []aur.Pkg) []map[string]*dep.InstallInfo {
 	return installInfo
 }
 
-// createDevelDB forces yay to create a DB of the existing development packages.
+// createDevelDB forces yippee to create a DB of the existing development packages.
 func createDevelDB(ctx context.Context, run *runtime.Runtime, dbExecutor db.Executor) error {
 	remoteNames := dbExecutor.InstalledRemotePackageNames()
 

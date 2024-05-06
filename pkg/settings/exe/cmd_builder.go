@@ -15,9 +15,9 @@ import (
 	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 const SudoLoopDuration = 241
@@ -184,7 +184,7 @@ func (c *CmdBuilder) deElevateCommand(ctx context.Context, cmd *exec.Cmd) *exec.
 		"--service-type=oneshot",
 		"--pipe", "--wait", "--pty", "--quiet",
 		"-p", "DynamicUser=yes",
-		"-p", "CacheDirectory=yay",
+		"-p", "CacheDirectory=yippee",
 		"-E", "HOME=/tmp",
 	}
 
@@ -247,7 +247,7 @@ func (c *CmdBuilder) BuildPacmanCmd(ctx context.Context, args *parser.Arguments,
 	return exec.CommandContext(ctx, argArr[0], argArr[1:]...)
 }
 
-// waitLock will lock yay checking the status of db.lck until it does not exist.
+// waitLock will lock yippee checking the status of db.lck until it does not exist.
 func (c *CmdBuilder) waitLock(dbPath string) {
 	lockDBPath := filepath.Join(dbPath, "db.lck")
 	if _, err := os.Stat(lockDBPath); err != nil {

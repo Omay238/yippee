@@ -18,9 +18,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 func newTestLogger() *text.Logger {
@@ -37,16 +37,16 @@ func TestParsing(t *testing.T) {
 
 	urls := []string{
 		"git+https://github.com/neovim/neovim.git",
-		"git://github.com/jguer/yay.git#branch=master",
+		"git://github.com/jguer/yippee.git#branch=master",
 		"git://github.com/davidgiven/ack",
-		"git://github.com/jguer/yay.git#tag=v3.440",
-		"git://github.com/jguer/yay.git#commit=e5470c88c6e2f9e0f97deb4728659ffa70ef5d0c",
-		"a+b+c+d+e+f://github.com/jguer/yay.git#branch=foo",
+		"git://github.com/jguer/yippee.git#tag=v3.440",
+		"git://github.com/jguer/yippee.git#commit=e5470c88c6e2f9e0f97deb4728659ffa70ef5d0c",
+		"a+b+c+d+e+f://github.com/jguer/yippee.git#branch=foo",
 	}
 
 	sources := []source{
 		{"github.com/neovim/neovim.git", "HEAD", []string{"https"}},
-		{"github.com/jguer/yay.git", "master", []string{"git"}},
+		{"github.com/jguer/yippee.git", "master", []string{"git"}},
 		{"github.com/davidgiven/ack", "HEAD", []string{"git"}},
 		{"", "", nil},
 		{"", "", nil},
@@ -238,10 +238,10 @@ func TestInfoStoreToUpgrade(t *testing.T) {
 				logger:     newTestLogger(),
 				CmdBuilder: tt.fields.CmdBuilder,
 				OriginsByPackage: map[string]OriginInfoByURL{
-					"yay": tt.args.infos,
+					"yippee": tt.args.infos,
 				},
 			}
-			got := v.ToUpgrade(context.Background(), "yay")
+			got := v.ToUpgrade(context.Background(), "yippee")
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -396,7 +396,7 @@ func TestInfoStore_Update(t *testing.T) {
 			name: "simple",
 			args: args{
 				pkgName: "hello",
-				sources: []gosrc.ArchString{{Value: "git://github.com/jguer/yay.git#branch=master"}},
+				sources: []gosrc.ArchString{{Value: "git://github.com/jguer/yippee.git#branch=master"}},
 			},
 			fields: fields{
 				OriginsByPackage: make(map[string]OriginInfoByURL),
@@ -408,7 +408,7 @@ func TestInfoStore_Update(t *testing.T) {
 		},
 	}
 
-	file, err := os.CreateTemp("/tmp", "yay-infostore-*-test")
+	file, err := os.CreateTemp("/tmp", "yippee-infostore-*-test")
 	filePath := file.Name()
 	require.NoError(t, err)
 
@@ -471,7 +471,7 @@ func TestInfoStore_Remove(t *testing.T) {
 		},
 	}
 
-	file, err := os.CreateTemp("/tmp", "yay-vcs-*-test")
+	file, err := os.CreateTemp("/tmp", "yippee-vcs-*-test")
 	filePath := file.Name()
 	require.NoError(t, err)
 
@@ -519,7 +519,7 @@ func TestInfoStore_CleanOrphans(t *testing.T) {
 		},
 	}
 
-	file, err := os.CreateTemp("/tmp", "yay-vcs-*-test")
+	file, err := os.CreateTemp("/tmp", "yippee-vcs-*-test")
 	filePath := file.Name()
 	require.NoError(t, err)
 

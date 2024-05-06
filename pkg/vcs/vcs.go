@@ -15,8 +15,8 @@ import (
 	gosrc "github.com/Morganamilo/go-srcinfo"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 const defaultTimeout = 15 * time.Second
@@ -52,7 +52,7 @@ type OriginInfoByURL map[string]OriginInfo
 // OriginInfo contains the last commit sha of a repo
 // Example:
 //
-//	"github.com/Jguer/yay.git": {
+//	"github.com/Jguer/yippee.git": {
 //		"protocols": [
 //			"https"
 //		],

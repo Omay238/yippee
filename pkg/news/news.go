@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 type item struct {

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: Ariejan de Vroom <ariejan@ariejan.net>, 2024\n"
-"Language-Team: Dutch (https://app.transifex.com/yay-1/teams/123732/nl/)\n"
+"Language-Team: Dutch (https://app.transifex.com/yippee-1/teams/123732/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,8 +139,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Voeg %s of %s toe aan je omgevingsvariabelen"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "Vermijd yay uit te voeren als root/sudo."
+msgid "Avoid running yippee as root/sudo."
+msgstr "Vermijd yippee uit te voeren als root/sudo."
 
 #: pkg/dep/dep_graph.go:63
 msgid "Check Dependency"
@@ -420,8 +420,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "Grootte van pacman-cache %s: %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "Grootte van yay-cache %s: %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "Grootte van yippee-cache %s: %s"
 
 #: print.go:62
 msgid "Snapshot URL"

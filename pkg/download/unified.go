@@ -11,11 +11,11 @@ import (
 
 	"github.com/Jguer/aur"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/multierror"
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/multierror"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 type httpRequestDoer interface {

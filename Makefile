@@ -4,10 +4,10 @@ export GOPROXY
 
 BUILD_TAG = devel
 ARCH ?= $(shell uname -m)
-BIN := yay
+BIN := yippee
 DESTDIR :=
 GO ?= go
-PKGNAME := yay
+PKGNAME := yippee
 PREFIX := /usr/local
 
 MAJORVERSION := 12
@@ -26,7 +26,7 @@ MOFILES := $(POFILES:.po=.mo)
 
 FLAGS ?= -trimpath -mod=readonly -modcacherw
 EXTRA_FLAGS ?= -buildmode=pie
-LDFLAGS := -X "main.yayVersion=${VERSION}" -X "main.localePath=${SYSTEMLOCALEPATH}" -linkmode=external -compressdwarf=false
+LDFLAGS := -X "main.yippeeVersion=${VERSION}" -X "main.localePath=${SYSTEMLOCALEPATH}" -linkmode=external -compressdwarf=false
 
 RELEASE_DIR := ${PKGNAME}_${VERSION}_${ARCH}
 PACKAGE := $(RELEASE_DIR).tar.gz
@@ -69,16 +69,16 @@ docker-release-all:
 	make docker-release-aarch64 ARCH=aarch64
 
 docker-release:
-	docker create --name yay-$(ARCH) yay:${ARCH} /bin/sh
-	docker cp yay-$(ARCH):/app/${PACKAGE} $(PACKAGE)
-	docker container rm yay-$(ARCH)
+	docker create --name yippee-$(ARCH) yippee:${ARCH} /bin/sh
+	docker cp yippee-$(ARCH):/app/${PACKAGE} $(PACKAGE)
+	docker container rm yippee-$(ARCH)
 
 .PHONY: docker-build
 docker-build:
-	docker build -t yay-$(ARCH):${VERSION} .
-	docker run -e="ARCH=$(ARCH)" --name yay-$(ARCH) yay-$(ARCH):${VERSION} make build VERSION=${VERSION} PREFIX=${PREFIX}
-	docker cp yay-$(ARCH):/app/${BIN} $(BIN)
-	docker container rm yay-$(ARCH)
+	docker build -t yippee-$(ARCH):${VERSION} .
+	docker run -e="ARCH=$(ARCH)" --name yippee-$(ARCH) yippee-$(ARCH):${VERSION} make build VERSION=${VERSION} PREFIX=${PREFIX}
+	docker cp yippee-$(ARCH):/app/${BIN} $(BIN)
+	docker container rm yippee-$(ARCH)
 
 .PHONY: lint
 lint:

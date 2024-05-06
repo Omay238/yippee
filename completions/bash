@@ -39,19 +39,19 @@ _pacman_pkg() {
   )"
 }
 
-_yay_pkg() {
+_yippee_pkg() {
   [ -z "$cur" ] && _pacman_pkg Slq && return
-  _arch_compgen "$(yay -Pc)"
+  _arch_compgen "$(yippee -Pc)"
 }
 
 _pacman_repo_list() {
   _arch_compgen "$(pacman-conf --repo-list)"
 }
 
-_yay() {
+_yippee() {
   compopt -o default
   local common core cur database files prev query remove sync upgrade o
-  local yays show getpkgbuild web
+  local yippees show getpkgbuild web
   local cur prev words cword
 
   _init_completion || return
@@ -66,7 +66,7 @@ _yay() {
   upgrade=('asdeps asexplicit overwrite needed nodeps assume-installed print recursive' 'p')
   core=('database files help query remove sync upgrade version' 'D F Q R S U V h')
 
-  ##yay stuff
+  ##yippee stuff
   common=('arch cachedir color config confirm dbpath debug gpgdir help hookdir logfile
           noconfirm noprogressbar noscriptlet quiet root verbose
           makepkg pacman git gpg gpgflags config requestsplitn sudoloop
@@ -78,12 +78,12 @@ _yay() {
           nomakepkgconf askremovemake askyesremovemake removemake noremovemake completioninterval aururl aurrpcurl
           searchby batchinstall'
     'b d h q r v')
-  yays=('clean gendb' 'c')
+  yippees=('clean gendb' 'c')
   show=('complete defaultconfig currentconfig stats news' 'c d g s w')
   getpkgbuild=('force print' 'f p')
   web=('vote unvote' 'v u')
 
-  for o in 'D database' 'F files' 'Q query' 'R remove' 'S sync' 'U upgrade' 'Y yays' 'P show' 'G getpkgbuild' 'W web'; do
+  for o in 'D database' 'F files' 'Q query' 'R remove' 'S sync' 'U upgrade' 'Y yippees' 'P show' 'G getpkgbuild' 'W web'; do
     _arch_incomp "$o" && break
   done
 
@@ -112,16 +112,16 @@ _yay() {
         { _arch_incomp 'g groups' && _pacman_pkg Sg; } ||
           { _arch_incomp 'l list' && _pacman_repo_list; } ||
           { _arch_incomp 's search' && compopt +o default; } ||
-          _yay_pkg
+          _yippee_pkg
         ;;
       U)
         _pacman_file
         ;;
       G)
-        _yay_pkg
+        _yippee_pkg
         ;;
       W)
-        _yay_pkg
+        _yippee_pkg
         ;;
       esac
   fi
@@ -133,6 +133,6 @@ _pacman_file() {
   _filedir 'pkg.*'
 }
 
-complete -F _yay yay
+complete -F _yippee yippee
 
 # ex:et ts=2 sw=2 ft=sh

@@ -16,15 +16,15 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Jguer/yay/v12/pkg/db/mock"
-	mockaur "github.com/Jguer/yay/v12/pkg/dep/mock"
-	"github.com/Jguer/yay/v12/pkg/query"
-	"github.com/Jguer/yay/v12/pkg/runtime"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
-	"github.com/Jguer/yay/v12/pkg/vcs"
+	"github.com/Jguer/yippee/v12/pkg/db/mock"
+	mockaur "github.com/Jguer/yippee/v12/pkg/dep/mock"
+	"github.com/Jguer/yippee/v12/pkg/query"
+	"github.com/Jguer/yippee/v12/pkg/runtime"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/vcs"
 )
 
 func TestYogurtMenuAURDB(t *testing.T) {
@@ -66,7 +66,7 @@ func TestYogurtMenuAURDB(t *testing.T) {
 
 	cmdArgs := parser.MakeArguments()
 	cmdArgs.AddArg("Y")
-	cmdArgs.AddTarget("yay")
+	cmdArgs.AddTarget("yippee")
 
 	db := &mock.DBExecutor{
 		AlpmArchitecturesFn: func() ([]string, error) {
@@ -81,8 +81,8 @@ func TestYogurtMenuAURDB(t *testing.T) {
 		SyncPackagesFn: func(s ...string) []mock.IPackage {
 			return []mock.IPackage{
 				&mock.Package{
-					PName:    "yay",
-					PBase:    "yay",
+					PName:    "yippee",
+					PBase:    "yippee",
 					PVersion: "10.0.0",
 					PDB:      mock.NewDB("aur"),
 				},
@@ -96,8 +96,8 @@ func TestYogurtMenuAURDB(t *testing.T) {
 		GetFn: func(ctx context.Context, query *aur.Query) ([]aur.Pkg, error) {
 			return []aur.Pkg{
 				{
-					Name:        "yay",
-					PackageBase: "yay",
+					Name:        "yippee",
+					PackageBase: "yippee",
 					Version:     "10.0.0",
 				},
 			}, nil

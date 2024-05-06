@@ -1,13 +1,13 @@
 # vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2 filetype=fish
 # Original Author for pacman: Giorgio Lando <patroclo7@gmail.com>
-# Updated for yay by jguer
+# Updated for yippee by jguer
 
-set -l progname yay
+set -l progname yippee
 
 # Yay constants
-set -l listall "(yay -Pc)"
+set -l listall "(yippee -Pc)"
 set -l listpacman "(__fish_print_packages)"
-set -l yayspecific '__fish_contains_opt -s Y yay'
+set -l yippeespecific '__fish_contains_opt -s Y yippee'
 set -l webspecific '__fish_contains_opt -s W web'
 set -l show '__fish_contains_opt -s P show'
 set -l getpkgbuild '__fish_contains_opt -s G getpkgbuild'
@@ -17,7 +17,7 @@ set -l listinstalled "(pacman -Q | string replace ' ' \t)"
 set -l listrepos "(__fish_print_pacman_repos)"
 set -l listgroups "(pacman -Sg)\t'Package Group'"
 
-set -l noopt 'not __fish_contains_opt -s S -s D -s Q -s R -s U -s T -s F -s Y -s W -s P -s G database query sync remove upgrade deptest files show getpkgbuild web yay'
+set -l noopt 'not __fish_contains_opt -s S -s D -s Q -s R -s U -s T -s F -s Y -s W -s P -s G database query sync remove upgrade deptest files show getpkgbuild web yippee'
 set -l database '__fish_contains_opt -s D database'
 set -l query '__fish_contains_opt -s Q query'
 set -l remove '__fish_contains_opt -s R remove'
@@ -154,7 +154,7 @@ complete -c $progname -n "$upgrade" -xa '(__fish_complete_suffix pkg.tar.zst; __
 
 
 # Yay operations
-complete -c $progname -s Y -f -l yay -n "$noopt" -d 'Yay specific operations'
+complete -c $progname -s Y -f -l yippee -n "$noopt" -d 'Yay specific operations'
 complete -c $progname -s P -f -l show -n "$noopt" -d 'Print information'
 complete -c $progname -s G -f -l getpkgbuild -n "$noopt" -d 'Get PKGBUILD from ABS or AUR'
 complete -c $progname -s W -f -l web -n "$noopt" -d 'Web operations'
@@ -169,14 +169,14 @@ complete -c $progname -n "not $noopt" -l repo -d 'Assume targets are from the AU
 complete -c $progname -n "not $noopt" -s a -l aur -d 'Assume targets are from the repositories' -f
 
 # Yay options
-complete -c $progname -n "$yayspecific" -s c -l clean -d 'Remove unneeded dependencies' -f
-complete -c $progname -n "$yayspecific" -l gendb -d 'Generate development package DB' -f
+complete -c $progname -n "$yippeespecific" -s c -l clean -d 'Remove unneeded dependencies' -f
+complete -c $progname -n "$yippeespecific" -l gendb -d 'Generate development package DB' -f
 
 # Show options
 complete -c $progname -n "$show" -s c -l complete -d 'Print a list of all AUR and repo packages' -f
 #complete -c $progname -n "$show" -s f -l fish -d 'During complete adjust the output for the fish shell' -f
-complete -c $progname -n "$show" -s d -l defaultconfig -d 'Print default yay configuration' -f
-complete -c $progname -n "$show" -s g -l currentconfig -d 'Print current yay configuration' -f
+complete -c $progname -n "$show" -s d -l defaultconfig -d 'Print default yippee configuration' -f
+complete -c $progname -n "$show" -s g -l currentconfig -d 'Print current yippee configuration' -f
 complete -c $progname -n "$show" -s s -l stats -d 'Display system package statistics' -f
 complete -c $progname -n "$show" -s w -l news -d 'Print arch news' -f
 complete -c $progname -n "$show" -s q -l quiet -d 'Do not print news description' -f
@@ -187,7 +187,7 @@ complete -c $progname -n "$getpkgbuild" -xa "$listall"
 complete -c $progname -n "$getpkgbuild" -s p -l print -d 'Print pkgbuild of packages' -f
 
 # Permanent configuration settings
-complete -c $progname -n "not $noopt" -l save -d 'Save current arguments to yay permanent configuration' -f
+complete -c $progname -n "not $noopt" -l save -d 'Save current arguments to yippee permanent configuration' -f
 complete -c $progname -n "not $noopt" -l aururl -d 'Set an alternative AUR URL' -f
 complete -c $progname -n "not $noopt" -l aurrpcurl -d 'Set an alternative URL for the AUR /rpc endpoint' -f
 complete -c $progname -n "not $noopt" -l builddir -d 'Directory to use for Building AUR Packages' -r

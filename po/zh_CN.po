@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: Xuekai Deng, 2024\n"
-"Language-Team: Chinese (China) (https://app.transifex.com/yay-1/teams/123732/zh_CN/)\n"
+"Language-Team: Chinese (China) (https://app.transifex.com/yippee-1/teams/123732/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,8 +139,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "将 %s 或 %s 添加到你的环境变量"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "避免以 root/sudo 运行 yay。"
+msgid "Avoid running yippee as root/sudo."
+msgstr "避免以 root/sudo 运行 yippee。"
 
 #: pkg/dep/dep_graph.go:63
 msgid "Check Dependency"
@@ -416,8 +416,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "pacman 缓存大小 %s: %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "yay 缓存大小 %s: %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "yippee 缓存大小 %s: %s"
 
 #: print.go:62
 msgid "Snapshot URL"

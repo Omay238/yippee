@@ -312,7 +312,7 @@ func isArg(arg string) bool {
 	case "F", "files":
 	case "V", "version":
 	case "h", "help":
-	case "Y", "yay":
+	case "Y", "yippee":
 	case "W", "web":
 	case "P", "show":
 	case "B", "build":
@@ -372,7 +372,7 @@ func isArg(arg string) bool {
 	case "y", "refresh":
 	case "x", "regex":
 	case "machinereadable":
-	// yay options
+	// yippee options
 	case "aururl":
 	case "aurrpcurl":
 	case "save":
@@ -456,8 +456,8 @@ func isOp(op string) bool {
 	case "S", "sync":
 	case "T", "deptest":
 	case "U", "upgrade":
-	// yay specific
-	case "Y", "yay":
+	// yippee specific
+	case "Y", "yippee":
 	case "W", "web":
 	case "B", "build":
 	case "P", "show":
@@ -509,7 +509,7 @@ func hasParam(arg string) bool {
 	case "print-format":
 	case "gpgdir":
 	case "color":
-	// yay params
+	// yippee params
 	case "aururl":
 	case "aurrpcurl":
 	case "mflags":

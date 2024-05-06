@@ -1,4 +1,4 @@
-package main // import "github.com/Jguer/yay"
+package main // import "github.com/Jguer/yippee"
 
 import (
 	"context"
@@ -9,15 +9,15 @@ import (
 
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/db/ialpm"
-	"github.com/Jguer/yay/v12/pkg/runtime"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/db/ialpm"
+	"github.com/Jguer/yippee/v12/pkg/runtime"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 var (
-	yayVersion = "12.0.4"            // To be set by compiler.
+	yippeeVersion = "12.0.4"            // To be set by compiler.
 	localePath = "/usr/share/locale" // To be set by compiler.
 )
 
@@ -27,13 +27,13 @@ func initGotext() {
 	}
 
 	if lc := os.Getenv("LANGUAGE"); lc != "" {
-		gotext.Configure(localePath, lc, "yay")
+		gotext.Configure(localePath, lc, "yippee")
 	} else if lc := os.Getenv("LC_ALL"); lc != "" {
-		gotext.Configure(localePath, lc, "yay")
+		gotext.Configure(localePath, lc, "yippee")
 	} else if lc := os.Getenv("LC_MESSAGES"); lc != "" {
-		gotext.Configure(localePath, lc, "yay")
+		gotext.Configure(localePath, lc, "yippee")
 	} else {
-		gotext.Configure(localePath, os.Getenv("LANG"), "yay")
+		gotext.Configure(localePath, os.Getenv("LANG"), "yippee")
 	}
 }
 
@@ -57,12 +57,12 @@ func main() {
 	initGotext()
 
 	if os.Geteuid() == 0 {
-		fallbackLog.Warnln(gotext.Get("Avoid running yay as root/sudo."))
+		fallbackLog.Warnln(gotext.Get("Avoid running yippee as root/sudo."))
 	}
 
 	configPath := settings.GetConfigPath()
 	// Parse config
-	cfg, err := settings.NewConfig(fallbackLog, configPath, yayVersion)
+	cfg, err := settings.NewConfig(fallbackLog, configPath, yippeeVersion)
 	if err != nil {
 		if str := err.Error(); str != "" {
 			fallbackLog.Errorln(str)
@@ -74,7 +74,7 @@ func main() {
 	}
 
 	if errS := cfg.RunMigrations(fallbackLog,
-		settings.DefaultMigrations(), configPath, yayVersion); errS != nil {
+		settings.DefaultMigrations(), configPath, yippeeVersion); errS != nil {
 		fallbackLog.Errorln(errS)
 	}
 
@@ -92,13 +92,13 @@ func main() {
 	}
 
 	if cfg.SaveConfig {
-		if errS := cfg.Save(configPath, yayVersion); errS != nil {
+		if errS := cfg.Save(configPath, yippeeVersion); errS != nil {
 			fallbackLog.Errorln(errS)
 		}
 	}
 
 	// Build run
-	run, err := runtime.NewRuntime(cfg, cmdArgs, yayVersion)
+	run, err := runtime.NewRuntime(cfg, cmdArgs, yippeeVersion)
 	if err != nil {
 		if str := err.Error(); str != "" {
 			fallbackLog.Errorln(str)

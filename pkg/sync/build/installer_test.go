@@ -13,12 +13,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Jguer/yay/v12/pkg/db/mock"
-	"github.com/Jguer/yay/v12/pkg/dep"
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
-	"github.com/Jguer/yay/v12/pkg/vcs"
+	"github.com/Jguer/yippee/v12/pkg/db/mock"
+	"github.com/Jguer/yippee/v12/pkg/dep"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/vcs"
 )
 
 func newTestLogger() *text.Logger {
@@ -58,8 +58,8 @@ func TestInstaller_InstallNeeded(t *testing.T) {
 			wantShow: []string{
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --needed --config  -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config  -- yay",
+				"pacman -U --needed --config  -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config  -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 		},
@@ -70,8 +70,8 @@ func TestInstaller_InstallNeeded(t *testing.T) {
 			wantShow: []string{
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -c --nobuild --noextract --ignorearch",
-				"pacman -U --needed --config  -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config  -- yay",
+				"pacman -U --needed --config  -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config  -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 		},
@@ -91,7 +91,7 @@ func TestInstaller_InstallNeeded(t *testing.T) {
 		tc := tc
 		t.Run(tc.desc, func(td *testing.T) {
 			tmpDir := td.TempDir()
-			pkgTar := tmpDir + "/yay-91.0.0-1-x86_64.pkg.tar.zst"
+			pkgTar := tmpDir + "/yippee-91.0.0-1-x86_64.pkg.tar.zst"
 
 			captureOverride := func(cmd *exec.Cmd) (stdout string, stderr string, err error) {
 				return pkgTar, "", nil
@@ -138,20 +138,20 @@ func TestInstaller_InstallNeeded(t *testing.T) {
 
 			cmdArgs := parser.MakeArguments()
 			cmdArgs.AddArg("needed")
-			cmdArgs.AddTarget("yay")
+			cmdArgs.AddTarget("yippee")
 
 			pkgBuildDirs := map[string]string{
-				"yay": tmpDir,
+				"yippee": tmpDir,
 			}
 
 			targets := []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			}
@@ -214,18 +214,18 @@ func TestInstaller_InstallMixedSourcesAndLayers(t *testing.T) {
 				"pacman -D -q --asdeps --config /etc/pacman.conf -- linux",
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --config /etc/pacman.conf -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yay",
+				"pacman -U --config /etc/pacman.conf -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 					"linux": {
 						Source:     dep.Sync,
@@ -243,18 +243,18 @@ func TestInstaller_InstallMixedSourcesAndLayers(t *testing.T) {
 				"pacman -D -q --asdeps --config /etc/pacman.conf -- linux",
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --config /etc/pacman.conf -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yay",
+				"pacman -U --config /etc/pacman.conf -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				}, {
 					"linux": {
@@ -297,18 +297,18 @@ func TestInstaller_InstallMixedSourcesAndLayers(t *testing.T) {
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --config /etc/pacman.conf -- pacman -U --config /etc/pacman.conf -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yay",
+				"pacman -U --config /etc/pacman.conf -- pacman -U --config /etc/pacman.conf -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist", "makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 					"jellyfin-server": {
 						Source:      dep.AUR,
@@ -329,18 +329,18 @@ func TestInstaller_InstallMixedSourcesAndLayers(t *testing.T) {
 				"pacman -D -q --asdeps --config /etc/pacman.conf -- jellyfin-server",
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --config /etc/pacman.conf -- pacman -U --config /etc/pacman.conf -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yay",
+				"pacman -U --config /etc/pacman.conf -- pacman -U --config /etc/pacman.conf -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config /etc/pacman.conf -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist", "makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				}, {
 					"jellyfin-server": {
@@ -358,7 +358,7 @@ func TestInstaller_InstallMixedSourcesAndLayers(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.desc, func(td *testing.T) {
-			pkgTar := tmpDir + "/yay-91.0.0-1-x86_64.pkg.tar.zst"
+			pkgTar := tmpDir + "/yippee-91.0.0-1-x86_64.pkg.tar.zst"
 			jfinPkgTar := tmpDirJfin + "/jellyfin-server-10.8.8-1-x86_64.pkg.tar.zst"
 
 			captureOverride := func(cmd *exec.Cmd) (stdout string, stderr string, err error) {
@@ -411,10 +411,10 @@ func TestInstaller_InstallMixedSourcesAndLayers(t *testing.T) {
 			installer := NewInstaller(mockDB, cmdBuilder, &vcs.Mock{}, parser.ModeAny, parser.RebuildModeNo, false, newTestLogger())
 
 			cmdArgs := parser.MakeArguments()
-			cmdArgs.AddTarget("yay")
+			cmdArgs.AddTarget("yippee")
 
 			pkgBuildDirs := map[string]string{
-				"yay":      tmpDir,
+				"yippee":      tmpDir,
 				"jellyfin": tmpDirJfin,
 			}
 
@@ -509,12 +509,12 @@ func TestInstaller_CompileFailed(t *testing.T) {
 			failPkgInstall: false,
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -527,12 +527,12 @@ func TestInstaller_CompileFailed(t *testing.T) {
 			failPkgInstall: true,
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -545,15 +545,15 @@ func TestInstaller_CompileFailed(t *testing.T) {
 			failPkgInstall: false,
 			targets: []map[string]*dep.InstallInfo{
 				{"bob": {
-					AURBase: ptrString("yay"),
+					AURBase: ptrString("yippee"),
 				}},
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -563,7 +563,7 @@ func TestInstaller_CompileFailed(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.desc, func(td *testing.T) {
-			pkgTar := tmpDir + "/yay-91.0.0-1-x86_64.pkg.tar.zst"
+			pkgTar := tmpDir + "/yippee-91.0.0-1-x86_64.pkg.tar.zst"
 
 			captureOverride := func(cmd *exec.Cmd) (stdout string, stderr string, err error) {
 				return pkgTar, "", nil
@@ -597,10 +597,10 @@ func TestInstaller_CompileFailed(t *testing.T) {
 
 			cmdArgs := parser.MakeArguments()
 			cmdArgs.AddArg("needed")
-			cmdArgs.AddTarget("yay")
+			cmdArgs.AddTarget("yippee")
 
 			pkgBuildDirs := map[string]string{
-				"yay": tmpDir,
+				"yippee": tmpDir,
 			}
 
 			errI := installer.Install(context.Background(), cmdArgs, tc.targets, pkgBuildDirs, []string{}, false)
@@ -612,7 +612,7 @@ func TestInstaller_CompileFailed(t *testing.T) {
 			failed, err := installer.CompileFailedAndIgnored()
 			if tc.wantErrCompile {
 				require.Error(td, err)
-				assert.ErrorContains(td, err, "yay")
+				assert.ErrorContains(td, err, "yippee")
 				assert.Len(t, failed, len(tc.targets))
 			} else {
 				require.NoError(td, err)
@@ -849,7 +849,7 @@ func TestInstaller_InstallDownloadOnly(t *testing.T) {
 		tc := tc
 		t.Run(tc.desc, func(td *testing.T) {
 			tmpDir := td.TempDir()
-			pkgTar := tmpDir + "/yay-91.0.0-1-x86_64.pkg.tar.zst"
+			pkgTar := tmpDir + "/yippee-91.0.0-1-x86_64.pkg.tar.zst"
 
 			captureOverride := func(cmd *exec.Cmd) (stdout string, stderr string, err error) {
 				return pkgTar, "", nil
@@ -895,20 +895,20 @@ func TestInstaller_InstallDownloadOnly(t *testing.T) {
 				parser.RebuildModeNo, true, newTestLogger())
 
 			cmdArgs := parser.MakeArguments()
-			cmdArgs.AddTarget("yay")
+			cmdArgs.AddTarget("yippee")
 
 			pkgBuildDirs := map[string]string{
-				"yay": tmpDir,
+				"yippee": tmpDir,
 			}
 
 			targets := []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			}
@@ -1077,18 +1077,18 @@ func TestInstaller_InstallRebuild(t *testing.T) {
 			wantShow: []string{
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -c --nobuild --noextract --ignorearch",
-				"pacman -U --config  -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config  -- yay",
+				"pacman -U --config  -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config  -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -1101,18 +1101,18 @@ func TestInstaller_InstallRebuild(t *testing.T) {
 			wantShow: []string{
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --config  -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config  -- yay",
+				"pacman -U --config  -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config  -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -1125,18 +1125,18 @@ func TestInstaller_InstallRebuild(t *testing.T) {
 			wantShow: []string{
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --config  -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config  -- yay",
+				"pacman -U --config  -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config  -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -1149,18 +1149,18 @@ func TestInstaller_InstallRebuild(t *testing.T) {
 			wantShow: []string{
 				"makepkg --nobuild -f -C --ignorearch",
 				"makepkg -f -c --noconfirm --noextract --noprepare --holdver --ignorearch",
-				"pacman -U --config  -- /testdir/yay-91.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asdeps --config  -- yay",
+				"pacman -U --config  -- /testdir/yippee-91.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asdeps --config  -- yippee",
 			},
 			wantCapture: []string{"makepkg --packagelist"},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Dep,
 						Version:     "91.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -1171,7 +1171,7 @@ func TestInstaller_InstallRebuild(t *testing.T) {
 		tc := tc
 		t.Run(tc.desc, func(td *testing.T) {
 			tmpDir := td.TempDir()
-			pkgTar := tmpDir + "/yay-91.0.0-1-x86_64.pkg.tar.zst"
+			pkgTar := tmpDir + "/yippee-91.0.0-1-x86_64.pkg.tar.zst"
 
 			captureOverride := func(cmd *exec.Cmd) (stdout string, stderr string, err error) {
 				return pkgTar, "", nil
@@ -1217,10 +1217,10 @@ func TestInstaller_InstallRebuild(t *testing.T) {
 				tc.rebuildOption, false, newTestLogger())
 
 			cmdArgs := parser.MakeArguments()
-			cmdArgs.AddTarget("yay")
+			cmdArgs.AddTarget("yippee")
 
 			pkgBuildDirs := map[string]string{
-				"yay": tmpDir,
+				"yippee": tmpDir,
 			}
 
 			errI := installer.Install(context.Background(), cmdArgs, tc.targets, pkgBuildDirs, []string{}, false)
@@ -1365,17 +1365,17 @@ func TestInstaller_KeepSrc(t *testing.T) {
 			wantShow: []string{
 				"makepkg --nobuild -f --ignorearch",
 				"makepkg --nobuild --noextract --ignorearch",
-				"pacman -U --config  -- /testdir/yay-92.0.0-1-x86_64.pkg.tar.zst",
-				"pacman -D -q --asexplicit --config  -- yay",
+				"pacman -U --config  -- /testdir/yippee-92.0.0-1-x86_64.pkg.tar.zst",
+				"pacman -D -q --asexplicit --config  -- yippee",
 			},
 			targets: []map[string]*dep.InstallInfo{
 				{
-					"yay": {
+					"yippee": {
 						Source:      dep.AUR,
 						Reason:      dep.Explicit,
 						Version:     "92.0.0-1",
 						SrcinfoPath: ptrString(tmpDir + "/.SRCINFO"),
-						AURBase:     ptrString("yay"),
+						AURBase:     ptrString("yippee"),
 					},
 				},
 			},
@@ -1386,7 +1386,7 @@ func TestInstaller_KeepSrc(t *testing.T) {
 		tc := tc
 		t.Run(tc.desc, func(td *testing.T) {
 			tmpDir := td.TempDir()
-			pkgTar := tmpDir + "/yay-92.0.0-1-x86_64.pkg.tar.zst"
+			pkgTar := tmpDir + "/yippee-92.0.0-1-x86_64.pkg.tar.zst"
 
 			captureOverride := func(cmd *exec.Cmd) (stdout string, stderr string, err error) {
 				return pkgTar, "", nil
@@ -1412,10 +1412,10 @@ func TestInstaller_KeepSrc(t *testing.T) {
 				parser.RebuildModeNo, false, newTestLogger())
 
 			cmdArgs := parser.MakeArguments()
-			cmdArgs.AddTarget("yay")
+			cmdArgs.AddTarget("yippee")
 
 			pkgBuildDirs := map[string]string{
-				"yay": tmpDir,
+				"yippee": tmpDir,
 			}
 
 			errI := installer.Install(context.Background(), cmdArgs, tc.targets, pkgBuildDirs, []string{}, false)

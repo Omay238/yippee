@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "PO-Revision-Date: 2021-08-13 22:55+0000\n"
 "Last-Translator: J G <transifex@jguer.space>, 2021\n"
-"Language-Team: Basque (https://www.transifex.com/yay-1/teams/123732/eu/)\n"
+"Language-Team: Basque (https://www.transifex.com/yippee-1/teams/123732/eu/)\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -138,8 +138,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Gehitu %s edo %s zure ingurune-aldagaietara"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "Saihestu yay root/sudo bezala exekutatzea."
+msgid "Avoid running yippee as root/sudo."
+msgstr "Saihestu yippee root/sudo bezala exekutatzea."
 
 #: pkg/dep/dep_graph.go:63
 #, fuzzy
@@ -428,7 +428,7 @@ msgstr "%s analizatzeak huts egin du: %s"
 
 #: print.go:98
 #, fuzzy
-msgid "Size of yay cache %s: %s"
+msgid "Size of yippee cache %s: %s"
 msgstr "%s analizatzeak huts egin du: %s"
 
 #: print.go:62
@@ -829,9 +829,9 @@ msgstr "bai"
 #~ msgid "failed to read vcs file '%s': %s"
 #~ msgstr "'%s' VCS fitxategia irakurtzeak huts egin du: %s"
 
-#~ msgid "invalid sort mode. Fix with yay -Y --bottomup --save"
+#~ msgid "invalid sort mode. Fix with yippee -Y --bottomup --save"
 #~ msgstr ""
-#~ "ordenatzeko modu baliogabea. Konpondu 'yay -Y --bottomup --save' "
+#~ "ordenatzeko modu baliogabea. Konpondu 'yippee -Y --bottomup --save' "
 #~ "exekutatzen"
 
 #~ msgid "no packages match search"

@@ -11,46 +11,46 @@ import (
 	alpm "github.com/Jguer/go-alpm/v2"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/completion"
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/download"
-	"github.com/Jguer/yay/v12/pkg/intrange"
-	"github.com/Jguer/yay/v12/pkg/news"
-	"github.com/Jguer/yay/v12/pkg/query"
-	"github.com/Jguer/yay/v12/pkg/runtime"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
-	"github.com/Jguer/yay/v12/pkg/upgrade"
-	"github.com/Jguer/yay/v12/pkg/vcs"
+	"github.com/Jguer/yippee/v12/pkg/completion"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/download"
+	"github.com/Jguer/yippee/v12/pkg/intrange"
+	"github.com/Jguer/yippee/v12/pkg/news"
+	"github.com/Jguer/yippee/v12/pkg/query"
+	"github.com/Jguer/yippee/v12/pkg/runtime"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/upgrade"
+	"github.com/Jguer/yippee/v12/pkg/vcs"
 )
 
 func usage(logger *text.Logger) {
 	logger.Println(`Usage:
-    yay
-    yay <operation> [...]
-    yay <package(s)>
+    yippee
+    yippee <operation> [...]
+    yippee <package(s)>
 
 operations:
-    yay {-h --help}
-    yay {-V --version}
-    yay {-D --database}    <options> <package(s)>
-    yay {-F --files}       [options] [package(s)]
-    yay {-Q --query}       [options] [package(s)]
-    yay {-R --remove}      [options] <package(s)>
-    yay {-S --sync}        [options] [package(s)]
-    yay {-T --deptest}     [options] [package(s)]
-    yay {-U --upgrade}     [options] <file(s)>
+    yippee {-h --help}
+    yippee {-V --version}
+    yippee {-D --database}    <options> <package(s)>
+    yippee {-F --files}       [options] [package(s)]
+    yippee {-Q --query}       [options] [package(s)]
+    yippee {-R --remove}      [options] <package(s)>
+    yippee {-S --sync}        [options] [package(s)]
+    yippee {-T --deptest}     [options] [package(s)]
+    yippee {-U --upgrade}     [options] <file(s)>
 
 New operations:
-    yay {-B --build}       [options] [dir]
-    yay {-G --getpkgbuild} [options] [package(s)]
-    yay {-P --show}        [options]
-    yay {-W --web}         [options] [package(s)]
-    yay {-Y --yay}         [options] [package(s)]
+    yippee {-B --build}       [options] [dir]
+    yippee {-G --getpkgbuild} [options] [package(s)]
+    yippee {-P --show}        [options]
+    yippee {-W --web}         [options] [package(s)]
+    yippee {-Y --yippee}         [options] [package(s)]
 
-If no operation is specified 'yay -Syu' will be performed
+If no operation is specified 'yippee -Syu' will be performed
 If no operation is specified and targets are provided -Y will be assumed
 
 New options:
@@ -124,12 +124,12 @@ Permanent configuration options:
 
 show specific options:
     -c --complete         Used for completions
-    -d --defaultconfig    Print default yay configuration
-    -g --currentconfig    Print current yay configuration
+    -d --defaultconfig    Print default yippee configuration
+    -g --currentconfig    Print current yippee configuration
     -s --stats            Display system package statistics
     -w --news             Print arch news
 
-yay specific options:
+yippee specific options:
     -c --clean            Remove unneeded dependencies
        --gendb            Generates development package DB used for updating
 
@@ -176,7 +176,7 @@ func handleCmd(ctx context.Context, run *runtime.Runtime,
 		return handleGetpkgbuild(ctx, run, cmdArgs, dbExecutor)
 	case "P", "show":
 		return handlePrint(ctx, run, cmdArgs, dbExecutor)
-	case "Y", "yay":
+	case "Y", "yippee":
 		return handleYay(ctx, run, cmdArgs, run.CmdBuilder,
 			dbExecutor, run.QueryBuilder)
 	case "W", "web":
@@ -224,7 +224,7 @@ func handleQuery(ctx context.Context, run *runtime.Runtime, cmdArgs *parser.Argu
 	if err := run.CmdBuilder.Show(run.CmdBuilder.BuildPacmanCmd(ctx,
 		cmdArgs, run.Cfg.Mode, settings.NoConfirm)); err != nil {
 		if str := err.Error(); strings.Contains(str, "exit status") {
-			// yay -Qdt should not output anything in case of error
+			// yippee -Qdt should not output anything in case of error
 			return fmt.Errorf("")
 		}
 
@@ -237,7 +237,7 @@ func handleQuery(ctx context.Context, run *runtime.Runtime, cmdArgs *parser.Argu
 func handleHelp(ctx context.Context, run *runtime.Runtime, cmdArgs *parser.Arguments) error {
 	usage(run.Logger)
 	switch cmdArgs.Op {
-	case "Y", "yay", "G", "getpkgbuild", "P", "show", "W", "web", "B", "build":
+	case "Y", "yippee", "G", "getpkgbuild", "P", "show", "W", "web", "B", "build":
 		return nil
 	}
 
@@ -247,13 +247,13 @@ func handleHelp(ctx context.Context, run *runtime.Runtime, cmdArgs *parser.Argum
 }
 
 func handleVersion(logger *text.Logger) {
-	logger.Printf("yay v%s - libalpm v%s\n", yayVersion, alpm.Version())
+	logger.Printf("yippee v%s - libalpm v%s\n", yippeeVersion, alpm.Version())
 }
 
 func handlePrint(ctx context.Context, run *runtime.Runtime, cmdArgs *parser.Arguments, dbExecutor db.Executor) error {
 	switch {
 	case cmdArgs.ExistsArg("d", "defaultconfig"):
-		tmpConfig := settings.DefaultConfig(yayVersion)
+		tmpConfig := settings.DefaultConfig(yippeeVersion)
 		run.Logger.Printf("%v", tmpConfig)
 
 		return nil

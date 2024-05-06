@@ -11,10 +11,10 @@ import (
 
 	"github.com/Jguer/aur"
 
-	"github.com/Jguer/yay/v12/pkg/db/mock"
-	mockaur "github.com/Jguer/yay/v12/pkg/dep/mock"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/db/mock"
+	mockaur "github.com/Jguer/yippee/v12/pkg/dep/mock"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 
 	"github.com/stretchr/testify/assert"
 )

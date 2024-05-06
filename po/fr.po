@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: Pierre Grasser, 2024\n"
-"Language-Team: French (https://app.transifex.com/yay-1/teams/123732/fr/)\n"
+"Language-Team: French (https://app.transifex.com/yippee-1/teams/123732/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -143,8 +143,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Ajoutez %s ou %s à vos variables d'environnement"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "Évitez d'exécuter yay en tant que root ou via sudo."
+msgid "Avoid running yippee as root/sudo."
+msgstr "Évitez d'exécuter yippee en tant que root ou via sudo."
 
 #: pkg/dep/dep_graph.go:63
 msgid "Check Dependency"
@@ -426,8 +426,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "Taille du cache de pacman %s : %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "Taille du cache de yay %s : %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "Taille du cache de yippee %s : %s"
 
 #: print.go:62
 msgid "Snapshot URL"

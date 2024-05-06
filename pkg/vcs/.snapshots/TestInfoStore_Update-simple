@@ -1,6 +1,6 @@
 {
 	"hello": {
-		"github.com/jguer/yay.git": {
+		"github.com/jguer/yippee.git": {
 			"protocols": [
 				"git"
 			],

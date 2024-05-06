@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
 )
 
 func TestPacmanConf(t *testing.T) {

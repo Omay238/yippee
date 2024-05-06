@@ -11,15 +11,15 @@ import (
 	mapset "github.com/deckarep/golang-set/v2"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/dep"
-	"github.com/Jguer/yay/v12/pkg/dep/topo"
-	"github.com/Jguer/yay/v12/pkg/intrange"
-	"github.com/Jguer/yay/v12/pkg/multierror"
-	"github.com/Jguer/yay/v12/pkg/query"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/text"
-	"github.com/Jguer/yay/v12/pkg/vcs"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/dep"
+	"github.com/Jguer/yippee/v12/pkg/dep/topo"
+	"github.com/Jguer/yippee/v12/pkg/intrange"
+	"github.com/Jguer/yippee/v12/pkg/multierror"
+	"github.com/Jguer/yippee/v12/pkg/query"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/vcs"
 )
 
 const cutOffExtra = 2

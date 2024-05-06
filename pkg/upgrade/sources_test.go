@@ -16,9 +16,9 @@ import (
 
 	alpm "github.com/Jguer/go-alpm/v2"
 
-	"github.com/Jguer/yay/v12/pkg/db/mock"
-	"github.com/Jguer/yay/v12/pkg/text"
-	"github.com/Jguer/yay/v12/pkg/vcs"
+	"github.com/Jguer/yippee/v12/pkg/db/mock"
+	"github.com/Jguer/yippee/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/vcs"
 )
 
 func Test_upAUR(t *testing.T) {

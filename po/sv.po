@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2023\n"
-"Language-Team: Swedish (https://app.transifex.com/yay-1/teams/123732/sv/)\n"
+"Language-Team: Swedish (https://app.transifex.com/yippee-1/teams/123732/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -138,8 +138,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Lägg till %s eller %s bland dina miljövariabler"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "Undvik att köra yay som root/sudo."
+msgid "Avoid running yippee as root/sudo."
+msgstr "Undvik att köra yippee som root/sudo."
 
 #: pkg/dep/dep_graph.go:63
 msgid "Check Dependency"
@@ -418,8 +418,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "Storlek på pacman cache %s: %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "Storlek på yay cache %s: %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "Storlek på yippee cache %s: %s"
 
 #: print.go:62
 msgid "Snapshot URL"

@@ -94,7 +94,7 @@ msgstr "да"
 	err := os.MkdirAll(dirname, os.ModePerm)
 	require.NoError(t, err)
 
-	fDefault, err := os.Create(path.Join(dirname, "yay.po"))
+	fDefault, err := os.Create(path.Join(dirname, "yippee.po"))
 	require.NoError(t, err)
 
 	defer fDefault.Close()
@@ -102,7 +102,7 @@ msgstr "да"
 	_, err = fDefault.WriteString(strCustom)
 	require.NoError(t, err)
 
-	gotext.Configure(tmpDir, "en_US", "yay")
+	gotext.Configure(tmpDir, "en_US", "yippee")
 	require.Equal(t, "да", gotext.Get("yes"))
 
 	type args struct {
@@ -142,7 +142,7 @@ msgstr "ja"
 	err := os.MkdirAll(dirname, os.ModePerm)
 	require.NoError(t, err)
 
-	fDefault, err := os.Create(path.Join(dirname, "yay.po"))
+	fDefault, err := os.Create(path.Join(dirname, "yippee.po"))
 	require.NoError(t, err)
 
 	defer fDefault.Close()
@@ -150,7 +150,7 @@ msgstr "ja"
 	_, err = fDefault.WriteString(strCustom)
 	require.NoError(t, err)
 
-	gotext.Configure(tmpDir, "en_US", "yay")
+	gotext.Configure(tmpDir, "en_US", "yippee")
 	require.Equal(t, "ja", gotext.Get("yes"))
 
 	type args struct {

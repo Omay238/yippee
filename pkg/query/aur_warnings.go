@@ -8,8 +8,8 @@ import (
 	"github.com/Jguer/aur"
 	"github.com/Jguer/go-alpm/v2"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 type AURWarnings struct {

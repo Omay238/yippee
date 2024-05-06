@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>, 2023\n"
-"Language-Team: Italian (Italy) (https://app.transifex.com/yay-1/teams/123732/it_IT/)\n"
+"Language-Team: Italian (Italy) (https://app.transifex.com/yippee-1/teams/123732/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,8 +139,8 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Aggiungi %s o %s alle tue variabili d'ambiente"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
-msgstr "Evita di eseguire yay come root/sudo."
+msgid "Avoid running yippee as root/sudo."
+msgstr "Evita di eseguire yippee come root/sudo."
 
 #: pkg/dep/dep_graph.go:63
 msgid "Check Dependency"
@@ -421,8 +421,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "Dimensione della cache di pacman %s: %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "Dimensione della cache di yay %s: %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "Dimensione della cache di yippee %s: %s"
 
 #: print.go:62
 msgid "Snapshot URL"
@@ -491,7 +491,7 @@ msgstr "Voti"
 
 #: print.go:87
 msgid "Yay version v%s"
-msgstr "Versione di yay v%s"
+msgstr "Versione di yippee v%s"
 
 #: pkg/menus/menu.go:49
 msgid "[N]one"

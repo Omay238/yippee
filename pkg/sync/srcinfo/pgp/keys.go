@@ -10,8 +10,8 @@ import (
 	gosrc "github.com/Morganamilo/go-srcinfo"
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 // pgpKeySet maps a PGP key with a list of PKGBUILDs that require it.
@@ -47,7 +47,7 @@ type GPGCmdBuilder interface {
 }
 
 // CheckPgpKeys iterates through the keys listed in the PKGBUILDs and if needed,
-// asks the user whether yay should try to import them.
+// asks the user whether yippee should try to import them.
 func CheckPgpKeys(ctx context.Context, logger *text.Logger, pkgbuildDirsByBase map[string]string, srcinfos map[string]*gosrc.Srcinfo,
 	cmdBuilder GPGCmdBuilder, noConfirm bool,
 ) ([]string, error) {

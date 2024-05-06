@@ -18,7 +18,7 @@ import (
 // THEN the directory should be created
 func TestNewConfig(t *testing.T) {
 	configDir := t.TempDir()
-	err := os.MkdirAll(filepath.Join(configDir, "yay"), 0o755)
+	err := os.MkdirAll(filepath.Join(configDir, "yippee"), 0o755)
 	assert.NoError(t, err)
 
 	t.Setenv("XDG_CONFIG_HOME", configDir)
@@ -27,7 +27,7 @@ func TestNewConfig(t *testing.T) {
 
 	config := map[string]string{"BuildDir": filepath.Join(cacheDir, "test-build-dir")}
 
-	f, err := os.Create(filepath.Join(configDir, "yay", "config.json"))
+	f, err := os.Create(filepath.Join(configDir, "yippee", "config.json"))
 	assert.NoError(t, err)
 
 	defer f.Close()
@@ -50,7 +50,7 @@ func TestNewConfig(t *testing.T) {
 // THEN the directory of AURDEST should be created and selected
 func TestNewConfigAURDEST(t *testing.T) {
 	configDir := t.TempDir()
-	err := os.MkdirAll(filepath.Join(configDir, "yay"), 0o755)
+	err := os.MkdirAll(filepath.Join(configDir, "yippee"), 0o755)
 	assert.NoError(t, err)
 
 	t.Setenv("XDG_CONFIG_HOME", configDir)
@@ -60,7 +60,7 @@ func TestNewConfigAURDEST(t *testing.T) {
 	config := map[string]string{"BuildDir": filepath.Join(cacheDir, "test-other-dir")}
 	t.Setenv("AURDEST", filepath.Join(cacheDir, "test-build-dir"))
 
-	f, err := os.Create(filepath.Join(configDir, "yay", "config.json"))
+	f, err := os.Create(filepath.Join(configDir, "yippee", "config.json"))
 	assert.NoError(t, err)
 
 	defer f.Close()
@@ -81,7 +81,7 @@ func TestNewConfigAURDEST(t *testing.T) {
 // Test tilde expansion in AURDEST
 func TestNewConfigAURDESTTildeExpansion(t *testing.T) {
 	configDir := t.TempDir()
-	err := os.MkdirAll(filepath.Join(configDir, "yay"), 0o755)
+	err := os.MkdirAll(filepath.Join(configDir, "yippee"), 0o755)
 	assert.NoError(t, err)
 
 	t.Setenv("XDG_CONFIG_HOME", configDir)
@@ -93,7 +93,7 @@ func TestNewConfigAURDESTTildeExpansion(t *testing.T) {
 	t.Setenv("AURDEST", "~/test-build-dir")
 	t.Setenv("HOME", homeDir)
 
-	f, err := os.Create(filepath.Join(configDir, "yay", "config.json"))
+	f, err := os.Create(filepath.Join(configDir, "yippee", "config.json"))
 	assert.NoError(t, err)
 
 	defer f.Close()

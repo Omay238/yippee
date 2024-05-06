@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Last-Translator: yiğit yeten, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/yay-1/teams/123732/tr/)\n"
+"Language-Team: Turkish (https://app.transifex.com/yippee-1/teams/123732/tr/)\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -138,7 +138,7 @@ msgid "Add %s or %s to your environment variables"
 msgstr "Ortam değişkenlerinize %s veya %s seçeneklerini ekleyin"
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
+msgid "Avoid running yippee as root/sudo."
 msgstr "Yay'ı root/sudo olarak çalıştırmaktan kaçının"
 
 #: pkg/dep/dep_graph.go:63
@@ -418,8 +418,8 @@ msgid "Size of pacman cache %s: %s"
 msgstr "pacman önbelleğinin boyutu: %s: %s"
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
-msgstr "yay önbelleğinin boyutu: %s: %s"
+msgid "Size of yippee cache %s: %s"
+msgstr "yippee önbelleğinin boyutu: %s: %s"
 
 #: print.go:62
 msgid "Snapshot URL"

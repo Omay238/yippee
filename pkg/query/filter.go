@@ -3,8 +3,8 @@ package query
 import (
 	"github.com/leonelquinteros/gotext"
 
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 func RemoveInvalidTargets(logger *text.Logger, targets []string, mode parser.TargetMode) []string {

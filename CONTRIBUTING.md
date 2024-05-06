@@ -1,19 +1,19 @@
-# Contributing to yay
+# Contributing to yippee
 
 ## Translation
 
-[Transifex](https://www.transifex.com/yay-1/yay/)
+[Transifex](https://www.transifex.com/yippee-1/yippee/)
 
 ## Quality Assurance
 
 ```sh
 pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay-git.git
-cd yay-git
+git clone https://aur.archlinux.org/yippee-git.git
+cd yippee-git
 makepkg -si
 ```
 
-Installing `yay-git` and using issues to help determine what's broken is already
+Installing `yippee-git` and using issues to help determine what's broken is already
 a very big help.
 
 ## Development
@@ -47,7 +47,7 @@ Note: Yay also depends on a few other projects, these are pulled as go modules.
 
 ### Building
 
-Run `make` to build Yay. This command will generate a binary called `yay` in
+Run `make` to build Yay. This command will generate a binary called `yippee` in
 the same directory as the Makefile.
 
 #### Docker Release

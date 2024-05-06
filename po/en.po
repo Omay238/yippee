@@ -129,7 +129,7 @@ msgid "Add %s or %s to your environment variables"
 msgstr ""
 
 #: main.go:60
-msgid "Avoid running yay as root/sudo."
+msgid "Avoid running yippee as root/sudo."
 msgstr ""
 
 #: pkg/dep/dep_graph.go:63
@@ -410,7 +410,7 @@ msgid "Size of pacman cache %s: %s"
 msgstr ""
 
 #: print.go:98
-msgid "Size of yay cache %s: %s"
+msgid "Size of yippee cache %s: %s"
 msgstr ""
 
 #: print.go:62

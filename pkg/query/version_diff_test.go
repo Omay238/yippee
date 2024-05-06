@@ -6,7 +6,7 @@ package query
 import (
 	"testing"
 
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 func TestVersionDiff(t *testing.T) {

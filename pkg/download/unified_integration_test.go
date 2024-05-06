@@ -14,10 +14,10 @@ import (
 
 	"github.com/Jguer/aur"
 
-	mockaur "github.com/Jguer/yay/v12/pkg/dep/mock"
-	"github.com/Jguer/yay/v12/pkg/settings/exe"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	mockaur "github.com/Jguer/yippee/v12/pkg/dep/mock"
+	"github.com/Jguer/yippee/v12/pkg/settings/exe"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 func TestIntegrationPKGBUILDReposDefinedDBClone(t *testing.T) {
@@ -28,7 +28,7 @@ func TestIntegrationPKGBUILDReposDefinedDBClone(t *testing.T) {
 			return []aur.Pkg{{}}, nil // fakes a package found for all
 		},
 	}
-	targets := []string{"core/linux", "yay-bin", "yay-git"}
+	targets := []string{"core/linux", "yippee-bin", "yippee-git"}
 
 	testLogger := text.NewLogger(os.Stdout, os.Stderr, strings.NewReader(""), true, "test")
 	cmdRunner := &exe.OSRunner{Log: testLogger}
@@ -46,7 +46,7 @@ func TestIntegrationPKGBUILDReposDefinedDBClone(t *testing.T) {
 		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
 
 	assert.NoError(t, err)
-	assert.EqualValues(t, map[string]bool{"core/linux": true, "yay-bin": true, "yay-git": true}, cloned)
+	assert.EqualValues(t, map[string]bool{"core/linux": true, "yippee-bin": true, "yippee-git": true}, cloned)
 }
 
 func TestIntegrationPKGBUILDReposNotExist(t *testing.T) {
@@ -57,7 +57,7 @@ func TestIntegrationPKGBUILDReposNotExist(t *testing.T) {
 			return []aur.Pkg{{}}, nil // fakes a package found for all
 		},
 	}
-	targets := []string{"core/yay", "yay-bin", "yay-git"}
+	targets := []string{"core/yippee", "yippee-bin", "yippee-git"}
 	testLogger := text.NewLogger(os.Stdout, os.Stderr, strings.NewReader(""), true, "test")
 	cmdRunner := &exe.OSRunner{Log: testLogger}
 	cmdBuilder := &exe.CmdBuilder{
@@ -68,14 +68,14 @@ func TestIntegrationPKGBUILDReposNotExist(t *testing.T) {
 	}
 
 	searcher := &testDBSearcher{
-		absPackagesDB: map[string]string{"yay": "core"},
+		absPackagesDB: map[string]string{"yippee": "core"},
 	}
 	cloned, err := PKGBUILDRepos(context.Background(), searcher, mockClient,
 		cmdBuilder, testLogger.Child("test"),
 		targets, parser.ModeAny, "https://aur.archlinux.org", dir, false)
 
 	assert.Error(t, err)
-	assert.EqualValues(t, map[string]bool{"yay-bin": true, "yay-git": true}, cloned)
+	assert.EqualValues(t, map[string]bool{"yippee-bin": true, "yippee-git": true}, cloned)
 }
 
 // GIVEN 2 aur packages and 1 in repo
@@ -89,7 +89,7 @@ func TestIntegrationPKGBUILDFull(t *testing.T) {
 	}
 
 	testLogger := text.NewLogger(os.Stdout, os.Stderr, strings.NewReader(""), true, "test")
-	targets := []string{"core/linux", "aur/yay-bin", "yay-git"}
+	targets := []string{"core/linux", "aur/yippee-bin", "yippee-git"}
 	searcher := &testDBSearcher{
 		absPackagesDB: map[string]string{"linux": "core"},
 	}

@@ -2,14 +2,14 @@
 .nh
 .ad l
 .SH NAME
-yay \- AUR Helper written in go
+yippee \- AUR Helper written in go
 
 .SH SYNOPSIS
-\fIyay\fR <operation> [options] [targets]
+\fIyippee\fR <operation> [options] [targets]
 .sp
-\fIyay\fR <search terms>
+\fIyippee\fR <search terms>
 .sp
-\fIyay\fR
+\fIyippee\fR
 
 .SH DESCRIPTION
 Yay is a Pacman wrapper with AUR support. It passes options to Makepkg and
@@ -21,8 +21,8 @@ This manpage only covers options unique to Yay. For other options see
 .SH YAY OPERATIONS
 
 .TP
-.B \-Y, \-\-yay
-Perform yay specific operations. This is the default if no other operation is
+.B \-Y, \-\-yippee
+Perform yippee specific operations. This is the default if no other operation is
 selected and targets are defined.
 
 .TP
@@ -31,7 +31,7 @@ Build a PKGBUILD in a given directory.
 
 .TP
 .B \-P, \-\-show
-Perform yay specific print operations.
+Perform yippee specific print operations.
 
 .TP
 .B \-G, \-\-getpkgbuild
@@ -42,7 +42,7 @@ Downloads PKGBUILD from ABS or AUR. The ABS can only be used for Arch Linux repo
 Web related operations such as voting for AUR packages.
 
 .RE
-If no operation is specified 'yay \-Syu' will be performed
+If no operation is specified 'yippee \-Syu' will be performed
 
 If no operation is specified and targets are provided \-Y will be assumed
 
@@ -105,11 +105,11 @@ and is not intended to be used directly by the user.
 
 .TP
 .B \-d, \-\-defaultconfig
-Print default yay configuration.
+Print default yippee configuration.
 
 .TP
 .B \-g, \-\-currentconfig
-Print current yay configuration.
+Print current yippee configuration.
 
 .TP
 .B \-s, \-\-stats
@@ -357,7 +357,7 @@ compared against the hash at install time. This allows devel updates to be
 checked almost instantly and not require the original pkgbuild to be downloaded.
 
 The slower pacaur-like devel checks can be implemented manually by piping
-a list of packages into yay (see \fBexamples\fR).
+a list of packages into yippee (see \fBexamples\fR).
 
 If 'devel' is enabled in the configuration file, you can temporarily disable it by
 using '--devel=false' on the command line
@@ -488,43 +488,43 @@ builds.
 
 .SH EXAMPLES
 .TP
-yay \fIfoo\fR
+yippee \fIfoo\fR
 Search and install from the repos and the \fBAUR\fR\ using yogurt mode.
 
 .TP
-yay \-Syu
+yippee \-Syu
 Update package list and upgrade all currently installed repo and \fBAUR\fR.
 
 .TP
-yay \-Sua
+yippee \-Sua
 Update all currently installed \fBAUR\fR packages.
 
 .TP
-yay \-S \fIfoo\fR
+yippee \-S \fIfoo\fR
 Installs package \fIfoo\fR from the repos or the \fBAUR\fR.
 
 .TP
-yay \-Ss \fIfoo\fR
+yippee \-Ss \fIfoo\fR
 Searches for package \fIfoo\fR on the repos or the \fBAUR\fR.
 
 .TP
-yay \-Si \fIfoo\fR
+yippee \-Si \fIfoo\fR
 Gets information about package \fIfoo\fR from the repos or the \fBAUR\fR.
 
 .TP
-yay \-S \fIfoo\fR \-\-mflags "\-\-skipchecksums \-\-skippgpcheck"
+yippee \-S \fIfoo\fR \-\-mflags "\-\-skipchecksums \-\-skippgpcheck"
 Installs \fIfoo\fR while skipping checksums and pgp checks.
 
 .TP
-yay \-\-devel \-\-save
+yippee \-\-devel \-\-save
 Sets devel to true in the config.
 
 .TP
-yay \-P \-\-stats
+yippee \-P \-\-stats
 Shows statistics for installed packages and system health.
 
 .TP
-pacman -Qmq | grep -Ee '-(cvs|svn|git|hg|bzr|darcs)$' | yay -S --needed -
+pacman -Qmq | grep -Ee '-(cvs|svn|git|hg|bzr|darcs)$' | yippee -S --needed -
 pacaur-like devel check.
 
 .SH ENVIRONMENT VARIABLES
@@ -542,9 +542,9 @@ to use when editing PKGBUILDS.
 .SH FILES
 .TP
 .B CONFIG DIRECTORY
-The config directory is \fI$XDG_CONFIG_HOME/yay/\fR. If
+The config directory is \fI$XDG_CONFIG_HOME/yippee/\fR. If
 \fB$XDG_CONFIG_HOME\fR is unset, the config directory will fall back to
-\fI$HOME/.config/yay\fR.
+\fI$HOME/.config/yippee\fR.
 
 \fIconfig.json\fR Is used to store all of Yay's config options. Editing
 this file should be done through Yay, using the options
@@ -552,9 +552,9 @@ mentioned in \fBPERMANENT CONFIGURATION SETTINGS\fR.
 
 .TP
 .B CACHE DIRECTORY
-The cache directory is \fI$XDG_CACHE_HOME/yay/\fR. If
+The cache directory is \fI$XDG_CACHE_HOME/yippee/\fR. If
 \fB$XDG_CACHE_HOME\fR is unset, the cache directory will fall back to
-\fI$HOME/.cache/yay\fR.
+\fI$HOME/.cache/yippee\fR.
 
 \fIcompletion.cache\fR holds a list of of all packages, including the AUR,
 for shell completion. By default the completion files are refreshed every
@@ -587,7 +587,7 @@ Notably: \fBDatabases\fR, \fBColor\fR and \fB*Path/*Dir\fR options are used.
 See the arch wiki at https://wiki.archlinux.org/index.php/Arch_User_Repository for more info on the \fBAUR\fR.
 
 .SH BUGS
-Please report bugs to our GitHub page https://github.com/Jguer/yay
+Please report bugs to our GitHub page https://github.com/Jguer/yippee
 
 .SH AUTHORS
 Jguer <joguer@proton.me>

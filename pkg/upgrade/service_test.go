@@ -15,17 +15,17 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/db/mock"
-	"github.com/Jguer/yay/v12/pkg/dep"
-	"github.com/Jguer/yay/v12/pkg/dep/topo"
-	"github.com/Jguer/yay/v12/pkg/query"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
-	"github.com/Jguer/yay/v12/pkg/vcs"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/db/mock"
+	"github.com/Jguer/yippee/v12/pkg/dep"
+	"github.com/Jguer/yippee/v12/pkg/dep/topo"
+	"github.com/Jguer/yippee/v12/pkg/query"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/vcs"
 
-	mockaur "github.com/Jguer/yay/v12/pkg/dep/mock"
+	mockaur "github.com/Jguer/yippee/v12/pkg/dep/mock"
 )
 
 func ptrString(s string) *string {
@@ -75,10 +75,10 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 		Devel:        false,
 	}
 
-	yayDepInfo := &dep.InstallInfo{
+	yippeeDepInfo := &dep.InstallInfo{
 		Reason:       dep.Explicit,
 		Source:       dep.AUR,
-		AURBase:      ptrString("yay"),
+		AURBase:      ptrString("yippee"),
 		LocalVersion: "10.2.3",
 		Version:      "10.2.4",
 		Upgrade:      true,
@@ -88,13 +88,13 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 	coreDB := mock.NewDB("core")
 	dbExe := &mock.DBExecutor{
 		InstalledRemotePackageNamesFn: func() []string {
-			return []string{"yay", "example-git"}
+			return []string{"yippee", "example-git"}
 		},
 		InstalledRemotePackagesFn: func() map[string]mock.IPackage {
 			mapRemote := make(map[string]mock.IPackage)
-			mapRemote["yay"] = &mock.Package{
-				PName:    "yay",
-				PBase:    "yay",
+			mapRemote["yippee"] = &mock.Package{
+				PName:    "yippee",
+				PBase:    "yippee",
 				PVersion: "10.2.3",
 				PReason:  alpm.PkgReasonExplicit,
 			}
@@ -155,7 +155,7 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 	mockAUR := &mockaur.MockAUR{
 		GetFn: func(ctx context.Context, query *aur.Query) ([]aur.Pkg, error) {
 			return []aur.Pkg{
-				{Name: "yay", Version: "10.2.4", PackageBase: "yay"},
+				{Name: "yippee", Version: "10.2.4", PackageBase: "yippee"},
 				{
 					Name: "example-git", Version: "2.2.1.r69.g8a10460-1",
 					PackageBase: "example", Depends: []string{"new-dep"},
@@ -194,7 +194,7 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 				enableDowngrade: false,
 			},
 			mustExist: map[string]*dep.InstallInfo{
-				"yay":         yayDepInfo,
+				"yippee":         yippeeDepInfo,
 				"linux":       linuxDepInfo,
 				"example-git": exampleDepInfoAUR,
 				"new-dep":     newDepInfo,
@@ -216,7 +216,7 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 				enableDowngrade: false,
 			},
 			mustExist: map[string]*dep.InstallInfo{
-				"yay":         yayDepInfo,
+				"yippee":         yippeeDepInfo,
 				"linux":       linuxDepInfo,
 				"example-git": exampleDepInfoDevel,
 			},
@@ -236,7 +236,7 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 				enableDowngrade: false,
 			},
 			mustExist: map[string]*dep.InstallInfo{
-				"yay":   yayDepInfo,
+				"yippee":   yippeeDepInfo,
 				"linux": linuxDepInfo,
 			},
 			mustNotExist: map[string]bool{"example-git": true, "new-dep": true},
@@ -258,12 +258,12 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 				"example-git": exampleDepInfoAUR,
 				"new-dep":     newDepInfo,
 			},
-			mustNotExist: map[string]bool{"linux": true, "yay": true},
+			mustNotExist: map[string]bool{"linux": true, "yippee": true},
 			wantErr:      false,
-			wantExclude:  []string{"linux", "yay"},
+			wantExclude:  []string{"linux", "yippee"},
 		},
 		{
-			name: "exclude yay",
+			name: "exclude yippee",
 			fields: fields{
 				input:     strings.NewReader("1\n"),
 				output:    io.Discard,
@@ -277,9 +277,9 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 				"linux":       linuxDepInfo,
 				"example-git": exampleDepInfoAUR,
 			},
-			mustNotExist: map[string]bool{"yay": true},
+			mustNotExist: map[string]bool{"yippee": true},
 			wantErr:      false,
-			wantExclude:  []string{"yay"},
+			wantExclude:  []string{"yippee"},
 		},
 		{
 			name: "exclude linux",
@@ -293,7 +293,7 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 				enableDowngrade: false,
 			},
 			mustExist: map[string]*dep.InstallInfo{
-				"yay":         yayDepInfo,
+				"yippee":         yippeeDepInfo,
 				"example-git": exampleDepInfoAUR,
 				"new-dep":     newDepInfo,
 			},
@@ -315,9 +315,9 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 			mustExist: map[string]*dep.InstallInfo{
 				"linux": linuxDepInfo,
 			},
-			mustNotExist: map[string]bool{"yay": true, "example-git": true},
+			mustNotExist: map[string]bool{"yippee": true, "example-git": true},
 			wantErr:      false,
-			wantExclude:  []string{"yay", "example-git", "new-dep"},
+			wantExclude:  []string{"yippee", "example-git", "new-dep"},
 		},
 		{
 			name: "exclude all",
@@ -331,9 +331,9 @@ func TestUpgradeService_GraphUpgrades(t *testing.T) {
 				enableDowngrade: false,
 			},
 			mustExist:    map[string]*dep.InstallInfo{},
-			mustNotExist: map[string]bool{"yay": true, "example-git": true, "linux": true},
+			mustNotExist: map[string]bool{"yippee": true, "example-git": true, "linux": true},
 			wantErr:      false,
-			wantExclude:  []string{"yay", "example-git", "linux", "new-dep"},
+			wantExclude:  []string{"yippee", "example-git", "linux", "new-dep"},
 		},
 	}
 	for _, tt := range tests {
@@ -400,10 +400,10 @@ func TestUpgradeService_GraphUpgradesMissingDep(t *testing.T) {
 		Devel:        false,
 	}
 
-	yayDepInfo := &dep.InstallInfo{
+	yippeeDepInfo := &dep.InstallInfo{
 		Reason:       dep.Explicit,
 		Source:       dep.AUR,
-		AURBase:      ptrString("yay"),
+		AURBase:      ptrString("yippee"),
 		LocalVersion: "10.2.3",
 		Version:      "10.2.4",
 		Upgrade:      true,
@@ -412,13 +412,13 @@ func TestUpgradeService_GraphUpgradesMissingDep(t *testing.T) {
 
 	dbExe := &mock.DBExecutor{
 		InstalledRemotePackageNamesFn: func() []string {
-			return []string{"yay", "example-git"}
+			return []string{"yippee", "example-git"}
 		},
 		InstalledRemotePackagesFn: func() map[string]mock.IPackage {
 			mapRemote := make(map[string]mock.IPackage)
-			mapRemote["yay"] = &mock.Package{
-				PName:    "yay",
-				PBase:    "yay",
+			mapRemote["yippee"] = &mock.Package{
+				PName:    "yippee",
+				PBase:    "yippee",
 				PVersion: "10.2.3",
 				PReason:  alpm.PkgReasonExplicit,
 			}
@@ -447,9 +447,9 @@ func TestUpgradeService_GraphUpgradesMissingDep(t *testing.T) {
 		GetFn: func(ctx context.Context, query *aur.Query) ([]aur.Pkg, error) {
 			return []aur.Pkg{
 				{
-					Name:        "yay",
+					Name:        "yippee",
 					Version:     "10.2.4",
-					PackageBase: "yay",
+					PackageBase: "yippee",
 				},
 				{
 					Name:        "example-git",
@@ -491,7 +491,7 @@ func TestUpgradeService_GraphUpgradesMissingDep(t *testing.T) {
 				enableDowngrade: false,
 			},
 			mustExist: map[string]*dep.InstallInfo{
-				"yay":             yayDepInfo,
+				"yippee":             yippeeDepInfo,
 				"example-git":     exampleDepInfoAUR,
 				"new-dep-missing": newDepMissingInfo,
 			},
@@ -511,7 +511,7 @@ func TestUpgradeService_GraphUpgradesMissingDep(t *testing.T) {
 				enableDowngrade: false,
 			},
 			mustExist: map[string]*dep.InstallInfo{
-				"yay": yayDepInfo,
+				"yippee": yippeeDepInfo,
 			},
 			mustNotExist: map[string]bool{"example-git": true, "new-dep-missing": true},
 			wantErr:      false,
@@ -568,13 +568,13 @@ func TestUpgradeService_GraphUpgradesNoUpdates(t *testing.T) {
 	t.Parallel()
 	dbExe := &mock.DBExecutor{
 		InstalledRemotePackageNamesFn: func() []string {
-			return []string{"yay", "example-git"}
+			return []string{"yippee", "example-git"}
 		},
 		InstalledRemotePackagesFn: func() map[string]mock.IPackage {
 			mapRemote := make(map[string]mock.IPackage)
-			mapRemote["yay"] = &mock.Package{
-				PName:    "yay",
-				PBase:    "yay",
+			mapRemote["yippee"] = &mock.Package{
+				PName:    "yippee",
+				PBase:    "yippee",
 				PVersion: "10.2.3",
 				PReason:  alpm.PkgReasonExplicit,
 			}

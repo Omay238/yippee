@@ -10,12 +10,12 @@ import (
 	alpm "github.com/Jguer/go-alpm/v2"
 	mapset "github.com/deckarep/golang-set/v2"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/query"
-	"github.com/Jguer/yay/v12/pkg/runtime"
-	"github.com/Jguer/yay/v12/pkg/settings"
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/query"
+	"github.com/Jguer/yippee/v12/pkg/runtime"
+	"github.com/Jguer/yippee/v12/pkg/settings"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 )
 
 // SyncSearch presents a query to the local repos and to the AUR.
@@ -224,7 +224,7 @@ func statistics(run *runtime.Runtime, dbExecutor db.Executor) (res struct {
 	Expln        int
 	TotalSize    int64
 	pacmanCaches map[string]int64
-	yayCache     int64
+	yippeeCache     int64
 },
 ) {
 	for _, pkg := range dbExecutor.LocalPackages() {
@@ -241,7 +241,7 @@ func statistics(run *runtime.Runtime, dbExecutor db.Executor) (res struct {
 		res.pacmanCaches[path] = getFolderSize(path)
 	}
 
-	res.yayCache = getFolderSize(run.Cfg.BuildDir)
+	res.yippeeCache = getFolderSize(run.Cfg.BuildDir)
 
 	return
 }

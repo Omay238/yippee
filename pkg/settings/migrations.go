@@ -3,8 +3,8 @@ package settings
 import (
 	"fmt"
 
-	"github.com/Jguer/yay/v12/pkg/db"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/db"
+	"github.com/Jguer/yippee/v12/pkg/text"
 
 	"github.com/leonelquinteros/gotext"
 )
@@ -15,7 +15,7 @@ type configMigration interface {
 	// return true if migration was done
 	Do(config *Configuration) bool
 	// Target version of the migration (e.g. "11.2.1")
-	// Should match the version of yay releasing this migration
+	// Should match the version of yippee releasing this migration
 	TargetVersion() string
 }
 

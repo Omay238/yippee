@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/Jguer/yay/v12/pkg/settings/parser"
-	"github.com/Jguer/yay/v12/pkg/text"
+	"github.com/Jguer/yippee/v12/pkg/settings/parser"
+	"github.com/Jguer/yippee/v12/pkg/text"
 
 	"github.com/leonelquinteros/gotext"
 )
@@ -21,7 +21,7 @@ var HideMenus = false
 // NoConfirm indicates if user input should be skipped.
 var NoConfirm = false
 
-// Configuration stores yay's config.
+// Configuration stores yippee's config.
 type Configuration struct {
 	AURURL                 string `json:"aururl"`
 	AURRPCURL              string `json:"aurrpcurl"`
@@ -79,7 +79,7 @@ type Configuration struct {
 	ReBuild    parser.RebuildMode `json:"rebuild"`
 }
 
-// SaveConfig writes yay config to file.
+// SaveConfig writes yippee config to file.
 func (c *Configuration) Save(configPath, version string) error {
 	c.Version = version
 
@@ -88,9 +88,9 @@ func (c *Configuration) Save(configPath, version string) error {
 		return err
 	}
 
-	// https://github.com/Jguer/yay/issues/1325
+	// https://github.com/Jguer/yippee/issues/1325
 	marshalledinfo = append(marshalledinfo, '\n')
-	// https://github.com/Jguer/yay/issues/1399
+	// https://github.com/Jguer/yippee/issues/1399
 	if _, err = os.Stat(filepath.Dir(configPath)); os.IsNotExist(err) && err != nil {
 		if mkErr := os.MkdirAll(filepath.Dir(configPath), 0o755); mkErr != nil {
 			return mkErr
@@ -192,7 +192,7 @@ func (c *Configuration) setPrivilegeElevator() error {
 func DefaultConfig(version string) *Configuration {
 	return &Configuration{
 		AURURL:                 "https://aur.archlinux.org",
-		BuildDir:               os.ExpandEnv("$HOME/.cache/yay"),
+		BuildDir:               os.ExpandEnv("$HOME/.cache/yippee"),
 		CleanAfter:             false,
 		KeepSrc:                false,
 		Editor:                 "",

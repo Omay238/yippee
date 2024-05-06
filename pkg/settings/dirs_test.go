@@ -24,7 +24,7 @@ func Test_getCacheHome(t *testing.T) {
 
 	got, err := getCacheHome()
 	require.NoError(t, err)
-	assert.Equal(t, filepath.Join(dir, "yay"), got)
+	assert.Equal(t, filepath.Join(dir, "yippee"), got)
 
 	require.NoError(t, os.Unsetenv("TMPDIR"))
 	require.NoError(t, os.Unsetenv("SUDO_USER"))
