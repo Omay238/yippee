@@ -139,7 +139,7 @@ msgstr "Ortam değişkenlerinize %s veya %s seçeneklerini ekleyin"
 
 #: main.go:60
 msgid "Avoid running yippee as root/sudo."
-msgstr "Yay'ı root/sudo olarak çalıştırmaktan kaçının"
+msgstr "Yippee'ı root/sudo olarak çalıştırmaktan kaçının"
 
 #: pkg/dep/dep_graph.go:63
 msgid "Check Dependency"
@@ -486,8 +486,8 @@ msgid "Votes"
 msgstr "Oylar"
 
 #: print.go:87
-msgid "Yay version v%s"
-msgstr "Yay sürümü v%s"
+msgid "Yippee version v%s"
+msgstr "Yippee sürümü v%s"
 
 #: pkg/menus/menu.go:49
 msgid "[N]one"

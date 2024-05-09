@@ -488,8 +488,8 @@ msgid "Votes"
 msgstr "Szavazatok"
 
 #: print.go:87
-msgid "Yay version v%s"
-msgstr "Yay v%s verzió"
+msgid "Yippee version v%s"
+msgstr "Yippee v%s verzió"
 
 #: pkg/menus/menu.go:49
 msgid "[N]one"

@@ -12,12 +12,12 @@ func (c *Configuration) ParseCommandLine(a *parser.Arguments) error {
 		return err
 	}
 
-	c.extractYayOptions(a)
+	c.extractYippeeOptions(a)
 
 	return nil
 }
 
-func (c *Configuration) extractYayOptions(a *parser.Arguments) {
+func (c *Configuration) extractYippeeOptions(a *parser.Arguments) {
 	for option, value := range a.Options {
 		if c.handleOption(option, value.First()) {
 			a.DelArg(option)

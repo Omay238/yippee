@@ -4,7 +4,7 @@
 ![AUR votes](https://img.shields.io/aur/votes/yippee?color=333333&style=for-the-badge)
 [![GitHub license](https://img.shields.io/github/license/jguer/yippee?color=333333&style=for-the-badge)](https://github.com/Jguer/yippee/blob/master/LICENSE)
 
-# Yay
+# Yippee
 
 Yet Another Yogurt - An AUR Helper Written in Go
 
@@ -28,11 +28,11 @@ Yet Another Yogurt - An AUR Helper Written in Go
 
 ## Installation
 
-If you are migrating from another AUR helper, you can simply install Yay with that helper.
+If you are migrating from another AUR helper, you can simply install Yippee with that helper.
 
 ### Source
 
-The initial installation of Yay can be done by cloning the PKGBUILD and
+The initial installation of Yippee can be done by cloning the PKGBUILD and
 building with makepkg:
 
 We start with updating the package lists and make sure we have the `base-devel` package group installed.
@@ -112,42 +112,42 @@ pacman -S --needed git base-devel yippee
 
 ## Frequently Asked Questions
 
-- **Yay does not display colored output. How do I fix it?**
+- **Yippee does not display colored output. How do I fix it?**
 
   Make sure you have the `Color` option in your `/etc/pacman.conf`
   (see issue [#123](https://github.com/Jguer/yippee/issues/123)).
 
 - **Sometimes diffs are printed to the terminal, and other times they are paged via less. How do I fix this?**
 
-  Yay uses `git diff` to display diffs, which by default tells less not to
+  Yippee uses `git diff` to display diffs, which by default tells less not to
   page if the output can fit into one terminal length. This behavior can be
   overridden by exporting your own flags (`export LESS=SRX`).
 
-- **Yay is not asking me to edit PKGBUILDS, and I don't like the diff menu! What can I do?**
+- **Yippee is not asking me to edit PKGBUILDS, and I don't like the diff menu! What can I do?**
 
   `yippee --editmenu --diffmenu=false --save`
 
-- **How can I tell Yay to act only on AUR packages, or only on repo packages?**
+- **How can I tell Yippee to act only on AUR packages, or only on repo packages?**
 
   `yippee -{OPERATION} --aur`
   `yippee -{OPERATION} --repo`
 
-- **A `Flagged Out Of Date AUR Packages` message is displayed. Why doesn't Yay update them?**
+- **A `Flagged Out Of Date AUR Packages` message is displayed. Why doesn't Yippee update them?**
 
   This message does not mean that updated AUR packages are available. It means
   the packages have been flagged out of date on the AUR, but
   their maintainers have not yet updated the `PKGBUILD`s
   (see [outdated AUR packages](https://wiki.archlinux.org/index.php/Arch_User_Repository#Foo_in_the_AUR_is_outdated.3B_what_should_I_do.3F)).
 
-- **Yay doesn't install dependencies added to a PKGBUILD during installation.**
+- **Yippee doesn't install dependencies added to a PKGBUILD during installation.**
 
-  Yay resolves all dependencies ahead of time. You are free to edit the
+  Yippee resolves all dependencies ahead of time. You are free to edit the
   PKGBUILD in any way, but any problems you cause are your own and should not be
   reported unless they can be reproduced with the original PKGBUILD.
 
 - **I know my `-git` package has updates but yippee doesn't offer to update it**
 
-  Yay uses an hash cache for development packages. Normally it is updated at the end of the package install with the message `Found git repo`.
+  Yippee uses an hash cache for development packages. Normally it is updated at the end of the package install with the message `Found git repo`.
   If you transition between aur helpers and did not install the devel package using yippee at some point, it is possible it never got added to the cache. `yippee -Y --gendb` will fix the current version of every devel package and start checking from there.
 
 - **I want to help out!**
@@ -156,7 +156,7 @@ pacman -S --needed git base-devel yippee
 
 ## Support
 
-All support related to Yay should be requested via GitHub issues. Since Yay is not
+All support related to Yippee should be requested via GitHub issues. Since Yippee is not
 officially supported by Arch Linux, support should not be sought out on the
 forums, AUR comments or other official channels.
 
@@ -164,7 +164,7 @@ A broken AUR package should be reported as a comment on the package's AUR page.
 A package may only be considered broken if it fails to build with makepkg.
 
 Reports should be made using makepkg and include the full output as well as any
-other relevant information. Never make reports using Yay or any other external
+other relevant information. Never make reports using Yippee or any other external
 tools.
 
 ## Images

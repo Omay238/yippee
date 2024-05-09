@@ -84,7 +84,7 @@ func localStatistics(ctx context.Context, run *runtime.Runtime, dbExecutor db.Ex
 
 	remoteNames := dbExecutor.InstalledRemotePackageNames()
 	remote := dbExecutor.InstalledRemotePackages()
-	run.Logger.Infoln(gotext.Get("Yay version v%s", yippeeVersion))
+	run.Logger.Infoln(gotext.Get("Yippee version v%s", yippeeVersion))
 	run.Logger.Println(text.Bold(text.Cyan("===========================================")))
 	run.Logger.Infoln(gotext.Get("Total installed packages: %s", text.Cyan(strconv.Itoa(info.Totaln))))
 	run.Logger.Infoln(gotext.Get("Foreign installed packages: %s", text.Cyan(strconv.Itoa(len(remoteNames)))))

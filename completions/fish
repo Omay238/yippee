@@ -4,7 +4,7 @@
 
 set -l progname yippee
 
-# Yay constants
+# Yippee constants
 set -l listall "(yippee -Pc)"
 set -l listpacman "(__fish_print_packages)"
 set -l yippeespecific '__fish_contains_opt -s Y yippee'
@@ -153,8 +153,8 @@ complete -c $progname -n "$sync" -xa "$listall $listgroups"
 complete -c $progname -n "$upgrade" -xa '(__fish_complete_suffix pkg.tar.zst; __fish_complete_suffix pkg.tar.xz; __fish_complete_suffix pkg.tar.gz; __fish_complete_suffix pkg.tar;)' -d 'Package file'
 
 
-# Yay operations
-complete -c $progname -s Y -f -l yippee -n "$noopt" -d 'Yay specific operations'
+# Yippee operations
+complete -c $progname -s Y -f -l yippee -n "$noopt" -d 'Yippee specific operations'
 complete -c $progname -s P -f -l show -n "$noopt" -d 'Print information'
 complete -c $progname -s G -f -l getpkgbuild -n "$noopt" -d 'Get PKGBUILD from ABS or AUR'
 complete -c $progname -s W -f -l web -n "$noopt" -d 'Web operations'
@@ -168,7 +168,7 @@ complete -c $progname -n "$webspecific" -xa "$listall"
 complete -c $progname -n "not $noopt" -l repo -d 'Assume targets are from the AUR' -f
 complete -c $progname -n "not $noopt" -s a -l aur -d 'Assume targets are from the repositories' -f
 
-# Yay options
+# Yippee options
 complete -c $progname -n "$yippeespecific" -s c -l clean -d 'Remove unneeded dependencies' -f
 complete -c $progname -n "$yippeespecific" -l gendb -d 'Generate development package DB' -f
 

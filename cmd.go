@@ -177,7 +177,7 @@ func handleCmd(ctx context.Context, run *runtime.Runtime,
 	case "P", "show":
 		return handlePrint(ctx, run, cmdArgs, dbExecutor)
 	case "Y", "yippee":
-		return handleYay(ctx, run, cmdArgs, run.CmdBuilder,
+		return handleYippee(ctx, run, cmdArgs, run.CmdBuilder,
 			dbExecutor, run.QueryBuilder)
 	case "W", "web":
 		return handleWeb(ctx, run, cmdArgs)
@@ -277,7 +277,7 @@ func handlePrint(ctx context.Context, run *runtime.Runtime, cmdArgs *parser.Argu
 	return nil
 }
 
-func handleYay(ctx context.Context, run *runtime.Runtime,
+func handleYippee(ctx context.Context, run *runtime.Runtime,
 	cmdArgs *parser.Arguments, cmdBuilder exe.ICmdBuilder,
 	dbExecutor db.Executor, queryBuilder query.Builder,
 ) error {

@@ -45,7 +45,7 @@ func NewRuntime(cfg *settings.Configuration, cmdArgs *parser.Arguments, version 
 		},
 	}
 
-	userAgent := fmt.Sprintf("Yay/%s", version)
+	userAgent := fmt.Sprintf("Yippee/%s", version)
 	voteClient, errVote := vote.NewClient(vote.WithUserAgent(userAgent),
 		vote.WithHTTPClient(httpClient))
 	if errVote != nil {

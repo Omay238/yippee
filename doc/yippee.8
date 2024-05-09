@@ -1,4 +1,4 @@
-.TH "YAY" "8" "2019\-10\-21" "Yay v12.0+" "Yay Manual"
+.TH "YAY" "8" "2019\-10\-21" "Yippee v12.0+" "Yippee Manual"
 .nh
 .ad l
 .SH NAME
@@ -12,10 +12,10 @@ yippee \- AUR Helper written in go
 \fIyippee\fR
 
 .SH DESCRIPTION
-Yay is a Pacman wrapper with AUR support. It passes options to Makepkg and
+Yippee is a Pacman wrapper with AUR support. It passes options to Makepkg and
 Pacman after resolving packages to install/upgrade.
 
-This manpage only covers options unique to Yay. For other options see
+This manpage only covers options unique to Yippee. For other options see
 \fBpacman(8)\fR.
 
 .SH YAY OPERATIONS
@@ -53,13 +53,13 @@ These operations are extended to support both AUR and repo packages.
 
 .TP
 .B \-Sc
-Yay will also clean cached AUR package and any untracked Files in the
+Yippee will also clean cached AUR package and any untracked Files in the
 cache. Cleaning untracked files will wipe any downloaded sources or
 built packages but will keep already downloaded vcs sources.
 
 .TP
 .B \-R
-Yay will also remove cached data about devel packages.
+Yippee will also remove cached data about devel packages.
 
 .SH NEW OPTIONS
 .TP
@@ -89,9 +89,9 @@ through exact matching.
 .TP
 .B \-\-gendb
 Generate development package database. Tracks the latest commit for each
-development package, when there is a new commit Yay will know to update. This
+development package, when there is a new commit Yippee will know to update. This
 is done per package whenever a package is synced. This option should only be
-used when migrating to Yay from another AUR helper.
+used when migrating to Yippee from another AUR helper.
 
 .TP
 .B \-c, \-\-clean
@@ -174,18 +174,18 @@ Set an alternative URL for the AUR /rpc endpoint.
 .TP
 .B \-\-builddir <dir>
 Directory to use for Building AUR Packages. This directory is also used as
-the AUR cache when deciding if Yay should skip builds.
+the AUR cache when deciding if Yippee should skip builds.
 
 .TP
 .B \-\-editor <command>
 Editor to use when editing PKGBUILDs. If this is not set the \fBVISUAL\fR
 environment variable will be checked, followed by \fBEDITOR\fR. If none of
-these are set Yay will prompt the user for an editor.
+these are set Yippee will prompt the user for an editor.
 
 .TP
 .B \-\-editorflags <flags>
 Passes arguments to the editor. These flags get passed to every instance where
-the editor is called by Yay. Arguments are split on whitespace before being
+the editor is called by Yippee. Arguments are split on whitespace before being
 passed to the editor. Multiple arguments may be passed by supplying a space
 separated list that is quoted by the shell.
 
@@ -291,7 +291,7 @@ Unset the answer for the upgrade menu.
 .TP
 .B \-\-cleanmenu
 Show the clean menu. This menu gives you the chance to fully delete the
-downloaded build files from Yay's cache before redownloading a fresh copy.
+downloaded build files from Yippee's cache before redownloading a fresh copy.
 
 If 'cleanmenu' is enabled in the configuration file, you can temporarily disable it by
 using '--cleanmenu=false' on the command line
@@ -310,7 +310,7 @@ less by default. This behaviour can be changed via git's config, the
 Show the edit menu. This menu gives you the option to edit or view PKGBUILDs
 before building.
 
-\fBWarning\fR: Yay resolves dependencies ahead of time via the RPC. It is not
+\fBWarning\fR: Yippee resolves dependencies ahead of time via the RPC. It is not
 recommended to edit pkgbuild variables unless you know what you are doing.
 
 .TP
@@ -410,20 +410,20 @@ PKGBUILD.
 
 .TP
 .B \-\-useask
-Use pacman's --ask flag to automatically confirm package conflicts. Yay lists
-conflicts ahead of time. It is possible that Yay does not detect
+Use pacman's --ask flag to automatically confirm package conflicts. Yippee lists
+conflicts ahead of time. It is possible that Yippee does not detect
 a conflict, causing a package to be removed without the user's confirmation.
 However, this is very unlikely.
 
 .TP
 .B \-\-combinedupgrade
-During sysupgrade, Yay will first perform a refresh, then show
+During sysupgrade, Yippee will first perform a refresh, then show
 its combined menu of repo and AUR packages that will be upgraded. Then after
 reviewing the pkgbuilds, the repo and AUR upgrade will start with no need
 for manual intervention.
 
-If Yay exits for any reason After the refresh without upgrading. It is then
-the user's responsibility to either resolve the reason Yay exited or run
+If Yippee exits for any reason After the refresh without upgrading. It is then
+the user's responsibility to either resolve the reason Yippee exited or run
 a sysupgrade through pacman directly.
 
 .TP
@@ -457,14 +457,14 @@ to the one wanted skip the package build and use the existing package.
 .TP
 .B \-\-mflags <flags>
 Passes arguments to makepkg. These flags get passed to every instance where
-makepkg is called by Yay. Arguments are split on whitespace before being
+makepkg is called by Yippee. Arguments are split on whitespace before being
 passed to makepkg. Multiple arguments may be passed by supplying a space
 separated list that is quoted by the shell.
 
 .TP
 .B \-\-gpgflags <flags>
 Passes arguments to gpg. These flags get passed to every instance where
-gpg is called by Yay. Arguments are split on whitespace before being
+gpg is called by Yippee. Arguments are split on whitespace before being
 passed to gpg. Multiple arguments may be passed by supplying a space
 separated list that is quoted by the shell.
 
@@ -477,7 +477,7 @@ The sudoloop is not guaranteed to work with a custom \fBsudo\fR command.
 .TP
 .B \-\-sudoflags <flags>
 Passes arguments to sudo. These flags get passed to every instance where
-sudo is called by Yay. Arguments are split on whitespace before being
+sudo is called by Yippee. Arguments are split on whitespace before being
 passed to sudo. Multiple arguments may be passed by supplying a space
 separated list that is quoted by the shell.
 
@@ -546,8 +546,8 @@ The config directory is \fI$XDG_CONFIG_HOME/yippee/\fR. If
 \fB$XDG_CONFIG_HOME\fR is unset, the config directory will fall back to
 \fI$HOME/.config/yippee\fR.
 
-\fIconfig.json\fR Is used to store all of Yay's config options. Editing
-this file should be done through Yay, using the options
+\fIconfig.json\fR Is used to store all of Yippee's config options. Editing
+this file should be done through Yippee, using the options
 mentioned in \fBPERMANENT CONFIGURATION SETTINGS\fR.
 
 .TP
@@ -571,8 +571,8 @@ and built packages from those packages.
 
 .TP
 .B PACMAN.CONF
-Yay uses Pacman's config file to set certain pacman options either through
-go\-alpm or Yay itself. Options inherited include most libalpm options and
+Yippee uses Pacman's config file to set certain pacman options either through
+go\-alpm or Yippee itself. Options inherited include most libalpm options and
 pacman options.
 
 Notably: \fBDatabases\fR, \fBColor\fR and \fB*Path/*Dir\fR options are used.

@@ -27,7 +27,7 @@ Otherwise send us a pull request and we will be happy to review it.
 
 ### Vision
 
-Yay is based on the design of [yaourt](https://github.com/archlinuxfr/yaourt), [apacman](https://github.com/oshazard/apacman) and [pacaur](https://github.com/rmarquis/pacaur). It is developed with these objectives in mind:
+Yippee is based on the design of [yaourt](https://github.com/archlinuxfr/yaourt), [apacman](https://github.com/oshazard/apacman) and [pacaur](https://github.com/rmarquis/pacaur). It is developed with these objectives in mind:
 
 - Provide an interface for pacman
 - Yaourt-style interactive search/install
@@ -36,18 +36,18 @@ Yay is based on the design of [yaourt](https://github.com/archlinuxfr/yaourt), [
 
 ### Dependencies
 
-Yay depends on:
+Yippee depends on:
 
 - go (make only)
 - git
 - base-devel
 - pacman
 
-Note: Yay also depends on a few other projects, these are pulled as go modules.
+Note: Yippee also depends on a few other projects, these are pulled as go modules.
 
 ### Building
 
-Run `make` to build Yay. This command will generate a binary called `yippee` in
+Run `make` to build Yippee. This command will generate a binary called `yippee` in
 the same directory as the Makefile.
 
 #### Docker Release
@@ -75,5 +75,5 @@ linters configured for this repository.
 
 ### Testing
 
-Run `make test` to test Yay. This command will verify that the code is
+Run `make test` to test Yippee. This command will verify that the code is
 formatted correctly, run the code through `go vet`, and run unit tests.

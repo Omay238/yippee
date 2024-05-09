@@ -485,8 +485,8 @@ msgid "Votes"
 msgstr "Votos"
 
 #: print.go:87
-msgid "Yay version v%s"
-msgstr "Versão Yay v%s"
+msgid "Yippee version v%s"
+msgstr "Versão Yippee v%s"
 
 #: pkg/menus/menu.go:49
 msgid "[N]one"
