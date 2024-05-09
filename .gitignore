@@ -17,8 +17,8 @@ _cgo_export.*
 *.exe
 *.test
 *.prof
-yay
-yay_*/
+yippee
+yippee_*/
 *.tar.gz
 qemu-*
 .go

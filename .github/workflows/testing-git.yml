@@ -9,10 +9,10 @@ on:
 
 jobs:
   build:
-    name: Lint and test yay (-git)
+    name: Lint and test yippee (-git)
     runs-on: ubuntu-latest
     container:
-      image: jguer/yay-builder:latest
+      image: jguer/yippee-builder:latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/cache@v3
@@ -23,8 +23,8 @@ jobs:
             ${{ runner.os }}-go-
       - uses: actions/cache@v3
         with:
-          path: /home/runner/work/yay/yay/pacman-git
-          key: ${{ runner.os }}-pacman-${{ hashFiles('/home/runner/work/yay/yay/pacman-git/PKGBUILD') }}
+          path: /home/runner/work/yippee/yippee/pacman-git
+          key: ${{ runner.os }}-pacman-${{ hashFiles('/home/runner/work/yippee/yippee/pacman-git/PKGBUILD') }}
           restore-keys: |
             ${{ runner.os }}-pacman-
       - name: checkout pacman-git

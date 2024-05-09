@@ -42,12 +42,12 @@ jobs:
             --build-arg VERSION=${{ steps.tags.outputs.version }} \
             --build-arg ARCH=${{ steps.tags.outputs.arch }} \
             --build-arg PREFIX="/usr" \
-            -t yay:${{ steps.tags.outputs.arch }} . --load
+            -t yippee:${{ steps.tags.outputs.arch }} . --load
           make docker-release ARCH=${{ steps.tags.outputs.arch }} VERSION=${{ steps.tags.outputs.version }} PREFIX="/usr"
           mv *.tar.gz artifacts
       - uses: actions/upload-artifact@v2
         with:
-          name: yay_${{ steps.tags.outputs.arch }}
+          name: yippee_${{ steps.tags.outputs.arch }}
           path: artifacts
   create_release:
     name: Create release from this build
@@ -66,13 +66,13 @@ jobs:
           echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
       - uses: actions/download-artifact@v2
         with:
-          name: yay_x86_64
+          name: yippee_x86_64
       - uses: actions/download-artifact@v2
         with:
-          name: yay_armv7h
+          name: yippee_armv7h
       - uses: actions/download-artifact@v2
         with:
-          name: yay_aarch64
+          name: yippee_aarch64
       - name: Create Release
         id: create_release
         uses: actions/create-release@master
@@ -90,8 +90,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./yay_${{ steps.tags.outputs.version }}_x86_64.tar.gz
-          asset_name: yay_${{ steps.tags.outputs.version }}_x86_64.tar.gz
+          asset_path: ./yippee_${{ steps.tags.outputs.version }}_x86_64.tar.gz
+          asset_name: yippee_${{ steps.tags.outputs.version }}_x86_64.tar.gz
           asset_content_type: application/tar+gzip
       - name: Upload armv7h asset
         id: upload-release-asset-armv7h
@@ -100,8 +100,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./yay_${{ steps.tags.outputs.version }}_armv7h.tar.gz
-          asset_name: yay_${{ steps.tags.outputs.version }}_armv7h.tar.gz
+          asset_path: ./yippee_${{ steps.tags.outputs.version }}_armv7h.tar.gz
+          asset_name: yippee_${{ steps.tags.outputs.version }}_armv7h.tar.gz
           asset_content_type: application/tar+gzip
       - name: Upload aarch64 asset
         id: upload-release-asset-aarch64
@@ -110,8 +110,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./yay_${{ steps.tags.outputs.version }}_aarch64.tar.gz
-          asset_name: yay_${{ steps.tags.outputs.version }}_aarch64.tar.gz
+          asset_path: ./yippee_${{ steps.tags.outputs.version }}_aarch64.tar.gz
+          asset_name: yippee_${{ steps.tags.outputs.version }}_aarch64.tar.gz
           asset_content_type: application/tar+gzip
       - name: Release Notary Action
         uses: docker://aevea/release-notary:latest

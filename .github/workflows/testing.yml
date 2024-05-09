@@ -4,10 +4,10 @@ on:
 
 jobs:
   build:
-    name: Lint and test yay
+    name: Lint and test yippee
     runs-on: ubuntu-latest
     container:
-      image: jguer/yay-builder:latest
+      image: jguer/yippee-builder:latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/cache@v3
@@ -25,8 +25,8 @@ jobs:
       - name: Run Integration Tests
         continue-on-error: true
         run: |
-          useradd -m yay &&
-          chown -R yay:yay . &&
-          cp -r ~/go/ /home/yay/go/ &&
-          chown -R yay:yay /home/yay/go/ &&
-          su yay -c "make test-integration"
+          useradd -m yippee &&
+          chown -R yippee:yippee . &&
+          cp -r ~/go/ /home/yippee/go/ &&
+          chown -R yippee:yippee /home/yippee/go/ &&
+          su yippee -c "make test-integration"
